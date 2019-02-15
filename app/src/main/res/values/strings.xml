@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">EatFit</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">Know What To Eat\n How To Eat\n And\n When To Eat !!!</string>
+
+    <string name="slide_2_title">Be The Person\n You Want To Be</string>
+    <string name="slide_2_desc">Make Yourself Fitter Everyday\n Set A Fitness Goal!</string>
+
+    <string name="slide_3_title">You Are Being Measured</string>
+    <string name="slide_3_desc">Track Your Performance\n With Each Meal!</string>
+
+    <string name="slide_4_title">Food Is Medicine</string>
+    <string name="slide_4_desc">Get Perfect Food Suggestions\n Just On A Click!</string>
+
+    <string name="play_again_desc"></string>
+    <string name="play_again">Get Perfect Food Suggestions\n Just On A Click</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
+    <string name="country_prompt">Choose a Goal</string>
+
+    <string-array name="goal_array">
+        <item>Muscle Gain</item>
+        <item>Weight Loss</item>
+        <item>Stay Fit</item>
+    </string-array>
+
+    <string name="activity_prompt">Choose Your Level</string>
+
+    <string-array name="activity_array">
+        <item>Not Active At All !!</item>
+        <item>Little Exercise</item>
+        <item>Moderate Exercise Everyday</item>
+        <item>Active Lifestyle</item>
+        <item>SportsPerson !!</item>
+    </string-array>
+</resources>

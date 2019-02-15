@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.eatfit">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_foreground"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity"></activity>
+        <activity android:name=".view.changeDietPreference.ChangeDietPreferenceActivity" />
+        <activity android:name=".view.changeRegionPreference.ChangeRegionPreferenceActivity" />
+        <activity android:name=".view.suggestFood.FoodSuggestionActivity" />
+        <activity android:name=".view.addQuantity.AddQuantityActivity" />
+        <activity android:name=".view.addFood.AddFoodActivity" />
+        <activity android:name=".view.graph.GraphActivity" />
+        <activity android:name=".view.basicProfile.BasicProfileActivity" />
+        <activity android:name=".view.details.DetailsActivity" />
+        <activity android:name=".view.changeFitnessGoal.ChangeFitnessGoalActivity" />
+        <activity android:name=".view.changeWeight.ChangeWeightActivity" />
+        <activity android:name=".view.reminder.SetReminderActivity" />
+        <activity android:name=".view.registration.SetRegionPreferenceActivity" />
+        <activity android:name=".view.registration.SetDietPreferenceActivity" />
+        <activity android:name=".view.registration.SetWeightGoalActivity" />
+        <activity android:name=".view.registration.SetFitnessGoalActivity" />
+        <activity android:name=".view.registration.setHeightAndWeight.SetHeightAndWeightActivity" />
+        <activity
+            android:name=".view.menu.MainMenuActivity"
+            android:label="@string/title_activity_main_menu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.registration.RegistrationActivity" />
+        <activity android:name=".view.login.LoginActivity" />
+        <activity android:name=".view.dashboard.DashBoard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
