@@ -8,12 +8,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_foreground"
+        android:icon="@mipmap/ic_food_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_foreground"
+        android:roundIcon="@mipmap/ic_food_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity"></activity>
+        <activity android:name=".view.searchFood.SearchFoodActivity"></activity>
+        <activity android:name=".view.forgorPassword.EnterNewPasswordActivity" />
+        <activity android:name=".view.forgorPassword.ForgotPasswordActivity" />
+        <activity android:name=".view.registration.setHeightAndWeight.SetHeightAndWeightActivity" />
+        <activity android:name=".view.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity" />
         <activity android:name=".view.changeDietPreference.ChangeDietPreferenceActivity" />
         <activity android:name=".view.changeRegionPreference.ChangeRegionPreferenceActivity" />
         <activity android:name=".view.suggestFood.FoodSuggestionActivity" />
@@ -25,18 +29,16 @@
         <activity android:name=".view.changeFitnessGoal.ChangeFitnessGoalActivity" />
         <activity android:name=".view.changeWeight.ChangeWeightActivity" />
         <activity android:name=".view.reminder.SetReminderActivity" />
-        <activity android:name=".view.registration.SetRegionPreferenceActivity" />
-        <activity android:name=".view.registration.SetDietPreferenceActivity" />
-        <activity android:name=".view.registration.SetWeightGoalActivity" />
-        <activity android:name=".view.registration.SetFitnessGoalActivity" />
-        <activity android:name=".view.registration.setHeightAndWeight.SetHeightAndWeightActivity" />
+        <activity android:name=".view.registration.setRegionPreference.SetRegionPreferenceActivity" />
+        <activity android:name=".view.registration.setDietPreference.SetDietPreferenceActivity" />
+        <activity android:name=".view.registration.setWeightGoal.SetWeightGoalActivity" />
+        <activity android:name=".view.registration.setFitnessGoal.SetFitnessGoalActivity" />
         <activity
             android:name=".view.menu.MainMenuActivity"
             android:label="@string/title_activity_main_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.registration.RegistrationActivity" />
-        <activity android:name=".view.login.LoginActivity" />
-        <activity android:name=".view.dashboard.DashBoard">
+        <activity android:name=".view.registration.basicRegistration.RegistrationActivity" />
+        <activity android:name=".view.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

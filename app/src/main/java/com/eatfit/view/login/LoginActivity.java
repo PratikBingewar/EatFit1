@@ -12,13 +12,14 @@ import android.widget.Toast;
 import com.eatfit.R;
 import com.eatfit.presenter.login.ILoginPresenter;
 import com.eatfit.presenter.login.LoginRepresenter;
+import com.eatfit.view.forgorPassword.ForgotPasswordActivity;
 import com.eatfit.view.menu.MainMenuActivity;
-import com.eatfit.view.registration.RegistrationActivity;
+import com.eatfit.view.registration.basicRegistration.RegistrationActivity;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView, View.OnClickListener {
 
     EditText txtEmail, txtPassword;
-    Button login, register;
+    Button login, register, forgotPassword;
     ILoginPresenter loginPresenter;
     boolean setPasswordViewType;
 
@@ -40,12 +41,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         register = findViewById(R.id.btn_register);
         register.setOnClickListener(this);
 
+        forgotPassword = findViewById(R.id.btn_forgot_password);
+        forgotPassword.setOnClickListener(this);
         loginPresenter = new LoginRepresenter(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        Intent intent;
         loginPresenter = new LoginRepresenter(this);
         switch (view.getId()) {
 
@@ -54,7 +57,12 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
                 break;
 
             case R.id.btn_register:
-                Intent intent = new Intent(LoginActivity.this,RegistrationActivity.class);
+                intent = new Intent(LoginActivity.this,RegistrationActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btn_forgot_password:
+                intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
                 break;
         }

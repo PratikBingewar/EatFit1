@@ -1,4 +1,4 @@
-package com.eatfit.view.registration;
+package com.eatfit.view.registration.basicRegistration;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,13 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.eatfit.R;
-import com.eatfit.presenter.registration.IRegisterPresenter;
-import com.eatfit.presenter.registration.RegisterPresenter;
+import com.eatfit.presenter.User;
+import com.eatfit.presenter.registration.basicRegistration.IRegisterPresenter;
+import com.eatfit.presenter.registration.basicRegistration.RegisterPresenter;
 import com.eatfit.view.login.LoginActivity;
 import com.eatfit.view.registration.setHeightAndWeight.SetHeightAndWeightActivity;
+
+import java.io.Serializable;
 
 public class RegistrationActivity extends AppCompatActivity implements IRegisterView, View.OnClickListener {
 
@@ -25,11 +28,14 @@ public class RegistrationActivity extends AppCompatActivity implements IRegister
     RadioButton radioGenderButton;
     String name,email,password,rePassword,gender;
     int age;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_1);
+
+        user = new User();
 
         edtName = findViewById(R.id.input_reg_name);
 
@@ -88,12 +94,13 @@ public class RegistrationActivity extends AppCompatActivity implements IRegister
 
     @Override
     public void onSuccessfulRegistration() {
+        user.setName(name);
+        user.setGender(gender);
+        user.setAge(age);
+        user.setUsername(email);
+        user.setPassword(password);
         Intent intent = new Intent(RegistrationActivity.this, SetHeightAndWeightActivity.class);
-        intent.putExtra("name",name);
-        intent.putExtra("gender",gender);
-        intent.putExtra("age",age);
-        intent.putExtra("email",email);
-        intent.putExtra("password",password);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
@@ -109,11 +116,9 @@ public class RegistrationActivity extends AppCompatActivity implements IRegister
         makeToast("Passwords do not match !!");
     }
 
-
-
     @Override
-    public void onFailedRegistration() {
-        makeToast("Registration Failed !!");
+    public void onFailedConection() {
+        makeToast("Check your Internet Connection !!");
     }
 
     @Override

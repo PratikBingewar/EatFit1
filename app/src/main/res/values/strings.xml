@@ -37,11 +37,19 @@
 
     <string name="activity_prompt">Choose Your Level</string>
 
+    <!-- String resources for activity level -->
     <string-array name="activity_array">
-        <item>Not Active At All !!</item>
-        <item>Little Exercise</item>
-        <item>Moderate Exercise Everyday</item>
-        <item>Active Lifestyle</item>
-        <item>SportsPerson !!</item>
+        <item>Sedentary</item>
+        <item>Lightly Active</item>
+        <item>Moderately Active</item>
+        <item>Very Active</item>
+        <item>Extra Active</item>
     </string-array>
+
+    <string-array name="intensity_array">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+
 </resources>

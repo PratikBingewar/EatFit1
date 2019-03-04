@@ -1,4 +1,4 @@
-package com.eatfit.model.registration;
+package com.eatfit.model.forgetPassword;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,36 +10,37 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eatfit.presenter.registration.basicRegistration.IRegisterPresenter;
-import com.eatfit.presenter.registration.basicRegistration.RegisterPresenter;
-import com.eatfit.view.registration.basicRegistration.IRegisterView;
+import com.eatfit.presenter.forgetPassword.ForgetPaswordPresenter;
+import com.eatfit.presenter.forgetPassword.IForgetPasswordPresenter;
+import com.eatfit.view.forgorPassword.IForgotPasswordView;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterModel implements IRegisterModel {
+public class ForgetPasswordModel implements IForgetPasswordModel{
 
-    String username;
-    IRegisterView iRegisterView;
-    IRegisterPresenter registerPresenter;
-    public final String  CHECK_USER_URL = "https://eatfit223.000webhostapp.com/volley/checkUsernameExistsOrNot.php";
+    String email,goal;
+    IForgetPasswordPresenter iForgetPasswordPresenter;
+    IForgotPasswordView iForgotPasswordView;
+    public final String  FORGET_PASSWORD_URL = "https://eatfit223.000webhostapp.com/volley/forgotPassword.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
 
-    public RegisterModel(String username, IRegisterView registerView, RegisterPresenter registerPresenter) {
-        this.username = username;
-        this.registerPresenter = registerPresenter;
-        this.iRegisterView = registerView;
-        requestQueue = Volley.newRequestQueue((Context) iRegisterView);
+    public ForgetPasswordModel(IForgotPasswordView forgotPasswordview, ForgetPaswordPresenter forgetPaswordPresenter, String email, String goal) {
+        this.iForgetPasswordPresenter = forgetPaswordPresenter;
+        this.iForgotPasswordView = forgotPasswordview;
+        this.email = email;
+        this.goal = goal;
+        requestQueue = Volley.newRequestQueue((Context) forgotPasswordview);
     }
 
     @Override
     public void authenticate() {
         Log.d("pratik","in authenticate");
-        stringRequest = new StringRequest(Request.Method.POST, CHECK_USER_URL,
+        stringRequest = new StringRequest(Request.Method.POST, FORGET_PASSWORD_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -49,14 +50,15 @@ public class RegisterModel implements IRegisterModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In No of Model error");
+                        Log.d("Pratik","In volley error");
                         changeConnectionStatus(false);
                     }
                 }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
-                param.put("username",username);
+                param.put("email",email);
+                param.put("goal",goal);
                 return param;
             }
         };
@@ -75,17 +77,16 @@ public class RegisterModel implements IRegisterModel {
             if (res.equals("Y")) {
                 Log.d("Pratik","In yes of Model error");
                 changeConnectionStatus(true);
-                registerPresenter.onValidUsername();
+                iForgetPasswordPresenter.onValidUserInput();
             } else if (res.equals("N")) {
                 Log.d("Pratik","In No of Model error");
                 changeConnectionStatus(false);
-                registerPresenter.userAlreadyExists();
+                iForgetPasswordPresenter.onInvalidUser();
             }
         } catch (Exception ex) {
             Log.d("Pratik","In exception ");
             changeConnectionStatus(false);
-            Log.d("pratik",ex.toString());
-            registerPresenter.onFailedConnection();
+            iForgetPasswordPresenter.onConnectionFailed();
         }
     }
 }

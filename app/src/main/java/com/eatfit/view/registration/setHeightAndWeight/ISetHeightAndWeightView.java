@@ -3,7 +3,7 @@ package com.eatfit.view.registration.setHeightAndWeight;
 public interface ISetHeightAndWeightView {
     void onHeightError();
     void onWeightError();
-    void onEmptyFieldsError();
-
-    void onSuccessFulInput();
+    void onEmptyFieldOfHeightError();
+    void onEmptyFieldOfWeightError();
+    void onSuccessfulInput();
 }

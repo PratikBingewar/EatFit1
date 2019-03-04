@@ -1,7 +1,7 @@
-package com.eatfit.view.registration;
+package com.eatfit.view.registration.basicRegistration;
 
 public interface IRegisterView {
-    void onFailedRegistration();
+    void onFailedConection();
     void userAlreadyExists();
     void onEmailError();
     void onNameError();

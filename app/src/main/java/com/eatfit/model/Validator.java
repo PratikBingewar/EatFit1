@@ -3,7 +3,7 @@ package com.eatfit.model;
 import android.util.Patterns;
 
 import com.eatfit.presenter.login.ILoginPresenter;
-import com.eatfit.presenter.registration.IRegisterPresenter;
+import com.eatfit.presenter.registration.basicRegistration.IRegisterPresenter;
 
 import java.util.regex.Pattern;
 
@@ -11,6 +11,9 @@ public class Validator {
     IRegisterPresenter iRegisterPresenter;
     ILoginPresenter iLoginPresenter;
 
+    public Validator(){
+
+    }
     public Validator(ILoginPresenter iLoginPresenter) {
         this.iLoginPresenter = iLoginPresenter;
     }
