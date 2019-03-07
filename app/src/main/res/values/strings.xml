@@ -52,4 +52,91 @@
         <item>Hard</item>
     </string-array>
 
+    <string-array name="breakfast_foods">
+        <item>Pohe</item>
+        <item>Idly</item>
+        <item>Wada</item>
+        <item>Upma</item>
+
+        <item>Milk</item>
+        <item>Bread</item>
+        <item>OatMeal</item>
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Papaya</item>
+        <item>WaterMelon</item>
+        <item>Raisins</item>
+        <item>Cornflakes</item>
+
+        <item>Uttappa</item>
+        <item>Sambar</item>
+        <item>Masala Dosa</item>
+        <item>Plain Dosa</item>
+        <item>Rava Dosa</item>
+        <item>Tea</item>
+        <item>Coffee</item>
+        <item>Samosa</item>
+    </string-array>
+
+    <string-array name="lunch_foods">
+        <item>Chapati</item>
+        <item>Potato</item>
+        <item>WaterMelon</item>
+        <item>WaterMelon</item>
+        <item>Roti</item>
+        <item>Rice</item>
+        <item>Dal</item>
+
+
+        <item>Pohe</item>
+        <item>Idly</item>
+        <item>Wada</item>
+        <item>Upma</item>
+
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Papaya</item>
+        <item>WaterMelon</item>
+        <item>WaterMelon</item>
+
+        <item>Uttappa</item>
+        <item>Sambar</item>
+        <item>Masala Dosa</item>
+        <item>Plain Dosa</item>
+        <item>Rava Dosa</item>
+        <item>Tea</item>
+        <item>Coffee</item>
+        <item>Samosa</item>
+    </string-array>
+
+    <string-array name="Snack_foods">
+        <item>Idly</item>
+        <item>Wada</item>
+        <item>Upma</item>
+
+        <item>Milk</item>
+        <item>Bread</item>
+        <item>OatMeal</item>
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Papaya</item>
+        <item>WaterMelon</item>
+
+        <item>Uttappa</item>
+        <item>Sambar</item>
+        <item>Masala Dosa</item>
+        <item>Plain Dosa</item>
+        <item>Rava Dosa</item>
+        <item>Tea</item>
+        <item>Coffee</item>
+        <item>Samosa</item>
+    </string-array>
+
+    <string-array name="dinner_foods">
+        <item>Milk</item>
+        <item>Bread</item>
+        <item>OatMeal</item>
+        <item>WaterMelon</item>
+        <item>Samosa</item>
+    </string-array>
 </resources>
