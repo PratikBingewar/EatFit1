@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.eatfit.R;
 import com.eatfit.presenter.User;
 import com.eatfit.presenter.registration.setWeightGoal.ISetWeightGoalPresenter;
-import com.eatfit.view.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity;
+import com.eatfit.view.registration.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity;
 
 public class SetWeightGoalActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener , ISetWeightGoalView{
 

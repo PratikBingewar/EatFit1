@@ -78,7 +78,7 @@ public class EnterNewPasswordModel implements IEnterNewPasswordModel{
             if (res.equals("Y")) {
                 Log.d("Pratik","In yes of Model error");
                 changeConnectionStatus(true);
-                enterNewPasswordPresenter.onUnsuccessfulUpdate();
+                enterNewPasswordPresenter.onSuccessfulUpdate();
             } else if (res.equals("N")) {
                 Log.d("Pratik","In No of Model error");
                 changeConnectionStatus(false);

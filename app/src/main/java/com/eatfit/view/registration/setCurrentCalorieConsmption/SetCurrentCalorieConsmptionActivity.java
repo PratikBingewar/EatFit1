@@ -1,4 +1,4 @@
-package com.eatfit.view.setCurrentCalorieConsmption;
+package com.eatfit.view.registration.setCurrentCalorieConsmption;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

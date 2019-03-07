@@ -17,7 +17,7 @@
         <activity android:name=".view.forgorPassword.EnterNewPasswordActivity" />
         <activity android:name=".view.forgorPassword.ForgotPasswordActivity" />
         <activity android:name=".view.registration.setHeightAndWeight.SetHeightAndWeightActivity" />
-        <activity android:name=".view.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity" />
+        <activity android:name=".view.registration.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity" />
         <activity android:name=".view.changeDietPreference.ChangeDietPreferenceActivity" />
         <activity android:name=".view.changeRegionPreference.ChangeRegionPreferenceActivity" />
         <activity android:name=".view.suggestFood.FoodSuggestionActivity" />

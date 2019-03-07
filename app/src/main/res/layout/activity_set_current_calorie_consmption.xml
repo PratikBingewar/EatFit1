@@ -1,9 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity">
+    tools:context=".view.registration.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/set_weight_goal_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dots_height"
+            android:text="What did you eat Yesterday ?"
+            android:textColor="@color/dot_dark_screen1"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/shape_select_current_diet"
+                android:text="Milk"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/bread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="bread"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+            <Button
+                android:id="@+id/oatmeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="oatmeal"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/banana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="banana"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+
+            <Button
+                android:id="@+id/tea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/shape_select_current_diet"
+                android:text="tea"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/coffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="coffee"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+            <Button
+                android:id="@+id/roti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="roti"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/idli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="idli"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+
+            <Button
+                android:id="@+id/dosa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/shape_select_current_diet"
+                android:text="dosa"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/bread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="bread"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+            <Button
+                android:id="@+id/oatmeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="oatmeal"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/banana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="banana"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+
+            <Button
+                android:id="@+id/milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/shape_select_current_diet"
+                android:text="Milk"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/bread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="bread"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+            <Button
+                android:id="@+id/oatmeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="oatmeal"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/banana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="banana"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+
+            <Button
+                android:id="@+id/milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/shape_select_current_diet"
+                android:text="Milk"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/bread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="bread"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+            <Button
+                android:id="@+id/oatmeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="oatmeal"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/banana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="banana"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+
+            <Button
+                android:id="@+id/milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/shape_select_current_diet"
+                android:text="Milk"
+                android:textColor="@color/black" />
+            <Button
+                android:id="@+id/bread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="bread"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+            <Button
+                android:id="@+id/oatmeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="oatmeal"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/banana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="banana"
+                android:background="@drawable/shape_select_current_diet"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_set_weight_goal_next"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Next"
+            android:background="@drawable/shape_login"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
