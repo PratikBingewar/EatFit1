@@ -33,7 +33,7 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/black"
             android:background="@drawable/shape_signup"
-            android:backgroundTint="@color/login_white">
+            android:backgroundTint="@android:color/transparent">
             <EditText android:id="@+id/input_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             app:passwordToggleDrawable="@drawable/icon_selector"
             app:passwordToggleTint="@color/black"
             android:background="@drawable/shape_signup"
-            android:backgroundTint="@color/login_white">
+            android:backgroundTint="@android:color/transparent">
             <EditText android:id="@+id/input_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,13 +78,14 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:text="New User ?  Register Here.."
-            android:textColor="@color/primary"/>
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btn_forgot_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="Forgot Password?..."/>
+            android:backgroundTint="@android:color/transparent"
+            android:text="Forgot Password?..."
+            android:textColor="@color/black" />
     </LinearLayout>
 </RelativeLayout>

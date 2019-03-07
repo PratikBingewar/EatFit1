@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     public void onSuccessfulLogin() {
         Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
