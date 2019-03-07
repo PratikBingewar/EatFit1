@@ -5,4 +5,5 @@ public interface IEnterNewPasswordPresenter {
     void onSuccessfulValidation();
     void onConnectionFailed();
     void onUnsuccessfulUpdate();
+    void onSuccessfulUpdate();
 }

@@ -22,15 +22,15 @@ import java.util.Map;
 
 public class LoginModel implements ILoginModel {
 
-    String email,password;
+    String username,password;
     public final String  LOGIN_URL = "http://eatfit223.000webhostapp.com/volley/login.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
     ILoginPresenter loginRepresenter;
 
-    public LoginModel(String email, String password, ILoginView iLoginView, LoginRepresenter mLoginRepresenter) {
-        this.email = email;
+    public LoginModel(String username, String password, ILoginView iLoginView, LoginRepresenter mLoginRepresenter) {
+        this.username = username;
         this.password = password;
         this.loginRepresenter = mLoginRepresenter;
         requestQueue = Volley.newRequestQueue((Context) iLoginView);
@@ -55,7 +55,7 @@ public class LoginModel implements ILoginModel {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
-                param.put("email",email);
+                param.put("username",username);
                 param.put("password",password);
                 return param;
             }

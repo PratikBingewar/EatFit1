@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EnterNewPasswordModel implements IEnterNewPasswordModel{
-    ForgotPasswordActivity forgotPasswordActivity;
     String username,password;
     EnterNewPasswordActivity enterNewPasswordActivity;
     IEnterNewPasswordPresenter enterNewPasswordPresenter;
@@ -36,7 +35,7 @@ public class EnterNewPasswordModel implements IEnterNewPasswordModel{
         this.password = password;
         this.enterNewPasswordActivity = enterNewPasswordView;
         this.enterNewPasswordPresenter = enterPasswordPresenter;
-        requestQueue = Volley.newRequestQueue((Context) forgotPasswordActivity);
+        requestQueue = Volley.newRequestQueue((Context) enterNewPasswordActivity);
     }
 
     @Override
@@ -79,7 +78,7 @@ public class EnterNewPasswordModel implements IEnterNewPasswordModel{
             if (res.equals("Y")) {
                 Log.d("Pratik","In yes of Model error");
                 changeConnectionStatus(true);
-                enterNewPasswordPresenter.onSuccessfulValidation();
+                enterNewPasswordPresenter.onUnsuccessfulUpdate();
             } else if (res.equals("N")) {
                 Log.d("Pratik","In No of Model error");
                 changeConnectionStatus(false);

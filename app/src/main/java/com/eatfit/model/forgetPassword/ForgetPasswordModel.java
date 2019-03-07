@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class ForgetPasswordModel implements IForgetPasswordModel{
 
-    String email,goal;
+    String username,goal;
     IForgetPasswordPresenter iForgetPasswordPresenter;
     IForgotPasswordView iForgotPasswordView;
     public final String  FORGET_PASSWORD_URL = "https://eatfit223.000webhostapp.com/volley/forgotPassword.php";
@@ -29,12 +29,12 @@ public class ForgetPasswordModel implements IForgetPasswordModel{
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
 
-    public ForgetPasswordModel(IForgotPasswordView forgotPasswordview, ForgetPaswordPresenter forgetPaswordPresenter, String email, String goal) {
+    public ForgetPasswordModel(IForgotPasswordView forgotPasswordView, ForgetPaswordPresenter forgetPaswordPresenter, String username, String goal) {
         this.iForgetPasswordPresenter = forgetPaswordPresenter;
-        this.iForgotPasswordView = forgotPasswordview;
-        this.email = email;
+        this.iForgotPasswordView = forgotPasswordView;
+        this.username = username;
         this.goal = goal;
-        requestQueue = Volley.newRequestQueue((Context) forgotPasswordview);
+        requestQueue = Volley.newRequestQueue((Context) forgotPasswordView);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ForgetPasswordModel implements IForgetPasswordModel{
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
-                param.put("email",email);
+                param.put("username",username);
                 param.put("goal",goal);
                 return param;
             }

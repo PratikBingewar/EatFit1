@@ -51,4 +51,9 @@ public class EnterPasswordPresenter implements IEnterNewPasswordPresenter{
     public void onUnsuccessfulUpdate() {
         enterNewPasswordView.onUnsuccessfulUpdate();
     }
+
+    @Override
+    public void onSuccessfulUpdate() {
+        enterNewPasswordView.onSuccessfulChange();
+    }
 }
