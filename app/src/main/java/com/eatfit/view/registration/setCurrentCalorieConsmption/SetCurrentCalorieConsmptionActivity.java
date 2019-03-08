@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.eatfit.R;
 public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
