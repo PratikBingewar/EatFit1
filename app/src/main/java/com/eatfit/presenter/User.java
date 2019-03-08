@@ -1,5 +1,8 @@
 package com.eatfit.presenter;
 
+import com.eatfit.presenter.BMRCalc.BMRCalculator;
+import com.eatfit.presenter.calculateIncrement.CalculateIncrement;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -10,9 +13,12 @@ public class User implements Serializable {
     public static String fitnessGoal;
     public static String activityLevel;
     public static double age,weight,height,BMI,BMR,calorieGoal,incrementInCalorieGoal,breakfastIntake,lunchIntake,snackIntake,dinnerIntake,timeToReachGoal;
+    public  BMRCalculator bmrCalculator;
+    public CalculateIncrement calculateIncrement;
     public User(){
 
     }
+
 
     public static String getGender() {
         return gender;
@@ -87,6 +93,8 @@ public class User implements Serializable {
     }
 
     public double getBMI() {
+        bmrCalculator = new BMRCalculator(height,weight,age,gender);
+        BMR = bmrCalculator.calculateBMR();
         return BMI;
     }
 
@@ -157,4 +165,9 @@ public class User implements Serializable {
     public void setTimeToReachGoal(double timeToReachGoal) {
         this.timeToReachGoal = timeToReachGoal;
     }
+
+    public  void calculateBMI(){
+        BMI = (Double) weight / ( (height*height) /100);
+    }
+
 }
