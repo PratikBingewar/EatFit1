@@ -35,6 +35,20 @@
         <item>Stay Fit</item>
     </string-array>
 
+    <string-array name="currnt_diet_intensity">
+        <item>Light</item>
+        <item>Medium</item>
+        <item>Heavy</item>
+    </string-array>
+
+    <string-array name="current_diet_types">
+        <item>English</item>
+        <item>South Indian</item>
+        <item>Common</item>
+        <item>North Indian</item>
+        <item>Maharashtrian</item>
+    </string-array>
+
     <string name="activity_prompt">Choose Your Level</string>
 
     <!-- String resources for activity level -->
@@ -139,4 +153,279 @@
         <item>WaterMelon</item>
         <item>Samosa</item>
     </string-array>
+
+
+
+
+    <string name="light_english_breakfast">The light English Breakfast contains
+        \nOne fried egg,One link sausage,\n
+        One slice Canadian bacon,One large slice bread,One cup beans.
+        \nIt Contains 850 calories, 40.4 g total fat,
+        \n19.4 g carbohydrates and 43.4 g of protein.
+    </string>
+
+    <string name="medium_english_breakfast">The medium English Breakfast contains
+        \Two fried egg,Two link sausage,\n
+        Two slice Canadian bacon,Two large slice bread,One cup beans.
+        \nIt Contains 1000 calories, 60.4 g total fat,
+        \n30.4 g carbohydrates and 60.4 g of protein.
+    </string>
+
+    <string name="heavy_english_breakfast">The heavy English Breakfast contains
+        \Three fried egg,Three link sausage,\n
+        Three slice Canadian bacon,Three large slice bread,One cup beans.
+        \nIt Contains 1200 calories, 40.4 g total fat,
+        \n43.4 g carbohydrates and 80.4 g of protein.
+    </string>
+
+
+    <string name="light_english_lunch">The light English Breakfast contains
+    </string>
+
+    <string name="medium_english_lunch">The medium English Breakfast contains
+    </string>
+
+    <string name="heavy_english_lunch">The heavy English Breakfast contains
+    </string>
+
+
+    <string name="light_english_snack">The light English Breakfast contains
+    </string>
+
+    <string name="medium_english_snack">The medium English Breakfast contains
+    </string>
+
+    <string name="heavy_english_snack">The heavy English Breakfast contains
+    </string>
+
+
+    <string name="light_english_dinner">The light English Breakfast contains
+    </string>
+
+    <string name="medium_english_dinner">The medium English Breakfast contains
+    </string>
+
+    <string name="heavy_english_dinner">The heavy English Breakfast contains
+    </string>
+
+
+
+
+    <string name="light_north_indian_breakfast">The light North Indian Breakfast contains
+        \nOne Aloo paratha,One cup curd,\n
+        and 1 spoon butter.
+        \nIt Contains 350 calories, 30 g total fat,
+        \n40 g carbohydrates and 20 g of protein.
+    </string>
+
+    <string name="medium_north_indian_breakfast">The light North Indian Breakfast contains
+        \One Aloo paratha,one cup curd,\n
+        and one spoon butter and chai with buiscuits.
+        \nIt Contains 410 calories, 37 g total fat,
+        \n65 g carbohydrates and 26 g of protein.
+    </string>
+
+    <string name="heavy_north_indian_breakfast">The light North Indian Breakfast contains
+        \Two Aloo paratha,one cup curd,\n
+        and one spoon butter and chai with buiscuits.
+        \nIt Contains 520 calories, 50 g total fat,
+        \n70 g carbohydrates and 42 g of protein.
+    </string>
+
+
+    <string name="light_north_indian_lunch">The light North Indian Breakfast contains
+    </string>
+
+    <string name="medium_north_indian_lunch">The light North Indian Breakfast contains
+    </string>
+
+    <string name="heavy_north_indian_lunch">The light North Indian Breakfast contains
+    </string>
+
+
+    <string name="light_north_indian_snack">The light North Indian Breakfast contains
+    </string>
+
+    <string name="medium_north_indian_snack">The light North Indian Breakfast contains
+    </string>
+
+    <string name="heavy_north_indian_snack">The light North Indian Breakfast contains
+    </string>
+
+
+    <string name="light_north_indian_dinner">The light North Indian Breakfast contains
+    </string>
+
+    <string name="medium_north_indian_dinner">The light North Indian Breakfast contains
+    </string>
+
+    <string name="heavy_north_indian_dinner">The light North Indian Breakfast contains
+    </string>
+
+
+
+
+
+    <string name="light_south_indian_breakfast">The light south indian Breakfast contains
+        \n3 millet Idlis / 1 Dosa / 2 Medu Vada \n
+        1 small bowl sambar,and coconut chutney.
+        \nIt Contains 150 calories, 5 g total fat,
+        \n30 g carbohydrates and 15 g of protein.
+    </string>
+
+    <string name="medium_south_indian_breakfast">The medium south indian Breakfast contains
+        \n8 millet Idlis / 3 Dosa / 5 Medu Vada / 2 uthappa of any type\n
+        2 small bowl sambar,and coconut chutney.
+        \nIt Contains 300 calories, 10 g total fat,
+        \n60 g carbohydrates and 30 g of protein.
+    </string>
+
+    <string name="heavy_south_indian_breakfast">The heavy south indian Breakfast contains
+        \n8 millet Idlis / 3 Dosa / 5 Medu Vada / 2 uthappa of any type\n
+        2 small bowl sambar,and coconut chutney.
+        \nIt Contains 475 calories, 17 g total fat,
+        \n90 g carbohydrates and 45 g of protein.
+    </string>
+
+
+    <string name="light_south_indian_lunch">The light south indian Breakfast contains
+    </string>
+
+    <string name="medium_south_indian_lunch">The medium south indian Breakfast contains
+    </string>
+
+    <string name="heavy_south_indian_lunch">The heavy south indian Breakfast contains
+    </string>
+
+
+    <string name="light_south_indian_snack">The light south indian Breakfast contains
+    </string>
+
+    <string name="medium_south_indian_snack">The medium south indian Breakfast contains
+    </string>
+
+    <string name="heavy_south_indian_snack">The heavy south indian Breakfast contains
+    </string>
+
+
+    <string name="light_south_indian_dinner">The light south indian Breakfast contains
+    </string>
+
+    <string name="medium_south_indian_dinner">The medium south indian Breakfast contains
+    </string>
+
+    <string name="heavy_south_indian_dinner">The heavy south indian Breakfast contains
+    </string>
+
+
+
+
+
+
+
+    <string name="light_maharashtrian_breakfast">The light Maharashtrian Breakfast contains
+       \One plate poha or upma, sheera or Sabudana.\n
+        \nIt Contains 250 calories, 20 g total fat,
+        \n30.4 g carbohydrates and 10.4 g of protein.
+    </string>
+
+    <string name="medium_maharashtrian_breakfast">The medium Maharashtrian Breakfast contains
+        \Two plate poha or upma or sheera, Sabudana\n
+        or one ThaliPeeth and chatani or courd.\n
+        \nIt Contains 550 calories, 45 g total fat,
+        \n59.4 g carbohydrates and 25.4 g of protein.
+    </string>
+
+    <string name="heavy_maharashtrian_breakfast">The heavy Maharashtrian Breakfast contains
+       One plate poha or upma, sheera or Sabudana with\n
+        Two ThaliPeeth and chatani or courd.\n
+        \nIt Contains 675 calories, 60 g total fat,
+        \n71.8 g carbohydrates and 35.9 g of protein.
+    </string>
+
+
+    <string name="light_maharashtrian_lunch">The light Maharashtrian Breakfast contains
+    </string>
+
+    <string name="medium_maharashtrian_lunch">The medium Maharashtrian Breakfast contains
+    </string>
+
+    <string name="heavy_maharashtrian_lunch">The heavy Maharashtrian Breakfast contains
+    </string>
+
+
+    <string name="light_maharashtrian_snack">The light Maharashtrian Breakfast contains
+    </string>
+
+    <string name="medium_maharashtrian_snack">The medium Maharashtrian Breakfast contains
+    </string>
+
+    <string name="heavy_maharashtrian_snack">The heavy Maharashtrian Breakfast contains
+    </string>
+
+
+    <string name="light_maharashtrian_dinner">The light Maharashtrian Breakfast contains
+    </string>
+
+    <string name="medium_maharashtrian_dinner">The medium Maharashtrian Breakfast contains
+    </string>
+
+    <string name="heavy_maharashtrian_dinner">The heavy Maharashtrian Breakfast contains
+    </string>
+
+
+
+
+
+    <string name="light_common_breakfast">The light Common Breakfast contains
+        \nOne cup tea/ coffee or milk \n
+        ,buiscuits or big cup of oats.
+        \nIt Contains 300 calories, 20 g total fat,
+        \n45 g carbohydrates and 10 g of protein.
+    </string>
+
+    <string name="medium_common_breakfast">The medium Common Breakfast contains
+        \nOne cup tea/ coffee or milk \n
+        with small bowl of oatmeal\n or poha with sambar and upma.
+        \nIt Contains 400 calories, 29 g total fat,
+        \71 g carbohydrates and 22 g of protein.
+    </string>
+
+    <string name="heavy_common_breakfast">The heavy Common Breakfast contains
+        \nOne cup tea/ coffee or milk \n
+        with large bowl of oatmeal\n or poha with sambar and upma.
+        \nIt Contains 500 calories, 40 g total fat,
+        \100 g carbohydrates and 35 g of protein.
+    </string>
+
+
+    <string name="light_common_snack">The light Common Breakfast contains
+    </string>
+
+    <string name="medium_common_snack">The medium Common Breakfast contains
+    </string>
+
+    <string name="heavy_common_snack">The heavy Common Breakfast contains
+    </string>
+
+
+
+    <string name="light_common_lunch">The light Common Breakfast contains
+    </string>
+
+    <string name="medium_common_lunch">The medium Common Breakfast contains
+    </string>
+
+    <string name="heavy_common_lunch">The heavy Common Breakfast contains
+    </string>
+
+
+    <string name="light_common_dinner">The light Common Breakfast contains
+    </string>
+
+    <string name="medium_common_dinner">The medium Common Breakfast contains
+    </string>
+
+    <string name="heavy_common_dinner">The heavy Common Breakfast contains
+    </string>
 </resources>

@@ -9,351 +9,210 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        >
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:id="@+id/set_weight_goal_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dots_height"
-            android:text="What did you eat Yesterday ?"
+            android:text="What did you eat Generally ?"
             android:textColor="@color/dot_dark_screen1"
             android:textSize="25dp"
             android:textStyle="bold" />
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="for breakfast:"
+                android:layout_gravity="center"
+                android:textColor="@color/dot_dark_screen1"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/breakfast_calorie_consumption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:drawable/btn_dropdown"
+                android:gravity="center" />
 
-            <Button
-                android:id="@+id/milk"
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/breakfast_diet_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="Milk"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/tea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="tea"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-            <Button
-                android:id="@+id/coffee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="coffee"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
+                android:layout_marginLeft="@dimen/dots_margin_bottom"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
 
-            <Button
-                android:id="@+id/oatmeal"
+            <ImageButton
+                android:id="@+id/breakfast_diet_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="oatmeal"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black" />
+                android:layout_marginLeft="@dimen/img_width_height"
+                android:src="@drawable/ic_info"/>
+
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:text="for lunch:"
+            android:layout_gravity="center"
+            android:textColor="@color/dot_dark_screen1"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/dots_height"/>
 
 
-            <Button
-                android:id="@+id/banana"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="banana"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/apple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="apple"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-            <Button
-                android:id="@+id/pohe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="pohe"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/upma"
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/lunch_calorie_consumption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="upma"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black" />
+                android:layout_gravity="center"
+                android:background="@android:drawable/btn_dropdown"
+                android:gravity="center" />
+
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/lunch_diet_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dots_margin_bottom"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+            <ImageButton
+                android:id="@+id/lunch_diet_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_info"
+                android:layout_marginLeft="@dimen/img_width_height"/>
+
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <Button
-                android:id="@+id/potato"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="potato"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/green_vegetables"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="green vegetable"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-            <Button
-                android:id="@+id/Muesli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Muesli"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-
-        </LinearLayout>
+            android:text="for snack:"
+            android:layout_gravity="center"
+            android:textColor="@color/dot_dark_screen1"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/dots_height"/>
 
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_gravity="center">
 
-
-            <Button
-                android:id="@+id/tomato"
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/snack_calorie_consumption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="tomato"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/cucumber"
+                android:background="@android:drawable/btn_dropdown"
+                android:layout_gravity="center"
+                android:gravity="center"
+                />
+
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/snack_diet_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="cucumber"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-            <Button
-                android:id="@+id/egg"
+                android:layout_marginLeft="@dimen/dots_margin_bottom"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+            <ImageButton
+                android:id="@+id/snack_diet_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="egg"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-
-            <Button
-                android:id="@+id/paratha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="paratha"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <Button
-                android:id="@+id/dal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="dal"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/rice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="rice"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-            <Button
-                android:id="@+id/chicken"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="chicken"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-
-            <Button
-                android:id="@+id/mutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="mutton"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <Button
-                android:id="@+id/fish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="fish"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/chinese"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="chinese"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-            <Button
-                android:id="@+id/bread"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="bread"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-
-            <Button
-                android:id="@+id/idli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="idli"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <Button
-                android:id="@+id/dosa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="dosa"
-                android:textColor="@color/black" />
-            <Button
-                android:id="@+id/Cornflakes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Cornflakes"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-            <Button
-                android:id="@+id/roti"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="roti"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black"/>
-
-            <Button
-                android:id="@+id/chapati"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="chapati"
-                android:background="@drawable/shape_select_current_diet"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <Button
-                android:id="@+id/biryani"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/shape_select_current_diet"
-                android:text="biryani"
-                android:textColor="@color/black" />
+                android:src="@drawable/ic_info"
+                android:layout_marginLeft="@dimen/img_width_height"/>
 
 
         </LinearLayout>
 
-        <SearchView
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:queryHint="Hmmm...any other foods ?? Enter here..."
-            android:elevation="2dp"
-            android:background="#fff"
-            />
+            android:text="for dinner:"
+            android:layout_gravity="center"
+            android:textColor="@color/dot_dark_screen1"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/dots_height"/>
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/dinner_calorie_consumption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:layout_gravity="center"
+                android:gravity="center"
+                />
+
+            <!-- Intensity Level -->
+            <Spinner
+                android:id="@+id/dinner_diet_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dots_margin_bottom"
+
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+            <ImageButton
+                android:id="@+id/dinner_diet_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_info"
+                android:layout_marginLeft="@dimen/img_width_height"/>
+
+
+        </LinearLayout>
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_set_weight_goal_next"
+            android:id="@+id/btn_complete_profile_next"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
