@@ -26,7 +26,7 @@
 
         <item
             android:id="@+id/change_current_weight_on_main_menu_drawer"
-            android:icon="@drawable/"
+            android:icon="@drawable/ic_add_black_48dp_00"
             android:title="Change Weight" />
 
         <item

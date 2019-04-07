@@ -13,9 +13,11 @@ public class CalculateIncrement {
         this.intensity = intensity;
     }
 
-    public void calculateTimePeriodAndIncrement(){
+    public double calculateTimePeriodAndIncrement(){
         checkIntensityAndSetIncrementInCalories();
         calculateTimePeriod();
+
+        return timePeriodToReachGoal;
     }
 
     private void calculateTimePeriod() {

@@ -1,5 +1,6 @@
 package com.eatfit.view.registration.setCurrentCalorieConsmption;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,21 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.eatfit.R;
+import com.eatfit.model.registration.RegistrationModel;
+import com.eatfit.presenter.BMICalculator.BMICalculator;
+import com.eatfit.presenter.BMRCalc.BMRCalculator;
+import com.eatfit.presenter.CalculateID.CalcActivityID;
+import com.eatfit.presenter.CalculateID.CalcFitnessID;
+import com.eatfit.presenter.CalculateID.CalcIntensityID;
+import com.eatfit.presenter.CalorieCalculationToReachGoal.CalorieCalculationToReachGoalClass;
+import com.eatfit.presenter.CurrentCalorieConsumptionCalcualtor.CurrentCalorieConsumptionCalculator;
+import com.eatfit.presenter.IntakeCalculator.IntakeCalculatorClass;
+import com.eatfit.presenter.TimeCalculator.TimeCalculatorClass;
+import com.eatfit.presenter.User;
+import com.eatfit.presenter.calculateIncrement.CalculateIncrement;
+import com.eatfit.presenter.calorieGoalCalculator.CalorieGoalCalculator;
+import com.eatfit.view.menu.MainMenuActivity;
+
 public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
 
@@ -21,18 +37,56 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
     String dietIntensityForBreakfast, dietIntensityForLunch, dietIntensityForSnack, dietIntensityForDinner;
     String dietTypeForBreakfast, dietTypeForLunch, dietTypeForSnack, dietTypeForDinner;
     String dietDescForBreakfast, dietDescForLunch, dietDescForSNack, dietDescForDinner;
+    Intent intent;
+    User user;
+
+    BMICalculator bmiCalculator;
+    BMRCalculator bmrCalculator;
+    CalorieCalculationToReachGoalClass calorieCalculationToReachGoalClass;
+    CalculateIncrement calculateIncrement;
+    TimeCalculatorClass timeCalculatorClass;
+    CalorieGoalCalculator calorieGoalCalculator;
+    CurrentCalorieConsumptionCalculator currentCalorieConsumptionCalculator;
+    IntakeCalculatorClass intakeCalculatorClass;
+    CalcActivityID calcActivityID;
+    CalcFitnessID calcFitnessID;
+    CalcIntensityID calcIntensityID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_current_calorie_consmption);
 
+        intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
+
         setIDs();
         setStringsToSpinners();
         setListeners();
+
     }
 
-    private void setListeners() {
+    public void setIDs() {
+
+        breakfastIntensity = findViewById(R.id.breakfast_calorie_consumption);
+        lunchIntensity = findViewById(R.id.lunch_calorie_consumption);
+        snackIntensity = findViewById(R.id.snack_calorie_consumption);
+        dinnerIntensity = findViewById(R.id.dinner_calorie_consumption);
+
+        breakfastDiet = findViewById(R.id.breakfast_diet_type);
+        lunchDiet = findViewById(R.id.lunch_diet_type);
+        snackDiet = findViewById(R.id.snack_diet_type);
+        dinnerDiet = findViewById(R.id.dinner_diet_type);
+
+        breakfastImageButton = findViewById(R.id.breakfast_diet_info);
+        lunchImageButton = findViewById(R.id.lunch_diet_info);
+        snackImageButton = findViewById(R.id.snack_diet_info);
+        dinnerImageButton = findViewById(R.id.dinner_diet_info);
+
+        next = findViewById(R.id.btn_complete_profile_next);
+    }
+
+    public void setListeners() {
         breakfastIntensity.setOnItemSelectedListener(this);
         lunchIntensity.setOnItemSelectedListener(this);
         snackIntensity.setOnItemSelectedListener(this);
@@ -287,7 +341,7 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this, "choose one of the options!!", Toast.LENGTH_SHORT).show();
     }
 
-    private void setStringsToSpinners() {
+    public void setStringsToSpinners() {
         ArrayAdapter<CharSequence> dietLevelArrayAdapter = ArrayAdapter.createFromResource(this, R.array.currnt_diet_intensity, android.R.layout.simple_spinner_item);
         dietLevelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -317,24 +371,7 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
         dinnerDiet.setAdapter(dietTypeArrayAdapter);
     }
 
-    private void setIDs() {
-        breakfastIntensity.findViewById(R.id.breakfast_calorie_consumption);
-        breakfastIntensity.findViewById(R.id.breakfast_calorie_consumption);
-        breakfastIntensity.findViewById(R.id.breakfast_calorie_consumption);
-        breakfastIntensity.findViewById(R.id.breakfast_calorie_consumption);
 
-        breakfastDiet.findViewById(R.id.breakfast_diet_type);
-        breakfastDiet.findViewById(R.id.breakfast_diet_type);
-        breakfastDiet.findViewById(R.id.breakfast_diet_type);
-        breakfastDiet.findViewById(R.id.breakfast_diet_type);
-
-        breakfastImageButton.findViewById(R.id.breakfast_diet_info);
-        breakfastImageButton.findViewById(R.id.breakfast_diet_info);
-        breakfastImageButton.findViewById(R.id.breakfast_diet_info);
-        breakfastImageButton.findViewById(R.id.breakfast_diet_info);
-
-        next.findViewById(R.id.btn_complete_profile_next);
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -423,6 +460,79 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
 
     @Override
     public void onClick(View v) {
+        if(dietIntensityForBreakfast.isEmpty() || dietTypeForBreakfast.isEmpty() ||
+                dietIntensityForLunch.isEmpty() || dietTypeForLunch.isEmpty()  ||
+                dietIntensityForSnack.isEmpty() || dietTypeForSnack.isEmpty() ||
+                dietIntensityForDinner.isEmpty() || dietTypeForDinner.isEmpty() ){
 
+            Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Select all values",Toast.LENGTH_SHORT).show();
+
+        }
+        else {
+            String name = user.getName();
+            String username = user.getUsername();
+            String password = user.getPassword();
+
+            double weight = user.getWeight();
+            double height = user.getHeight();
+            bmiCalculator = new BMICalculator(height,weight);
+            double BMI = bmiCalculator.calculateAndReturnBMI();
+
+            double age = user.getAge();
+            String gender = user.getGender();
+            bmrCalculator = new BMRCalculator(height,weight,age,gender);
+            double BMR = bmrCalculator.calculateBMR();
+
+            String lifeStyle = user.getActivityLevel();
+            String fitnessGoal = user.getFitnessGoal();
+            calorieGoalCalculator = new CalorieGoalCalculator(lifeStyle,BMR,fitnessGoal);
+            double calorieGoal = calorieGoalCalculator.getCalorieGoal();
+
+            intakeCalculatorClass = new IntakeCalculatorClass();
+            double intakeForBreakFast = intakeCalculatorClass.calculateIntakeForBreakFast();
+            double intakeForLunch = intakeCalculatorClass.calculateIntakeForLunch();
+            double intakeForSnack = intakeCalculatorClass.calculateIntakeForSnack();
+            double intakeForDinner = intakeCalculatorClass.calculateIntakeForDinner();
+
+            currentCalorieConsumptionCalculator = new CurrentCalorieConsumptionCalculator(intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner);
+            double totalCalories = currentCalorieConsumptionCalculator.calculateAndReturnTotalCalories();
+
+            String intensity = user.getIntensity();
+
+            timeCalculatorClass = new TimeCalculatorClass(gender,fitnessGoal,intensity);
+            double timeToReachGoal = timeCalculatorClass.calcualteAndReturnCTime();
+            timeToReachGoal = timeToReachGoal * 30;
+
+            calculateIncrement = new CalculateIncrement(totalCalories,calorieGoal,intensity);
+            double increment = calculateIncrement.calculateTimePeriodAndIncrement();
+
+            String activity = user.getActivityLevel();
+            calcActivityID = new CalcActivityID(activity);
+            int activityID = calcActivityID.returnActivityID();
+
+            calcIntensityID = new CalcIntensityID(intensity);
+            int intensityID = calcActivityID.returnActivityID();
+
+            calcFitnessID = new CalcFitnessID(fitnessGoal);
+            int fitnessID = calcFitnessID.returnFitnessID();
+
+            RegistrationModel registerModel = new RegistrationModel(name,gender,age,weight,height,username,password,BMR,BMI,calorieGoal,increment,intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner,timeToReachGoal,intensityID,fitnessID,activityID,this);
+
+            Intent intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
+            intent.putExtra("user",user);
+            startActivity(intent);
+            finish();
+        }
+
+    }
+
+    public  void onSuccessfulRegistration(){
+        Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
+    }
+    public  void onError(String error){
+        Toast.makeText(SetCurrentCalorieConsmptionActivity.this,error,Toast.LENGTH_SHORT).show();
+    }
+    public void onFailedRegistration(){
+        Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration failed",Toast.LENGTH_SHORT).show();
     }
 }

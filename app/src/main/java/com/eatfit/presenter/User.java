@@ -6,26 +6,63 @@ import com.eatfit.presenter.calculateIncrement.CalculateIncrement;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    public static String name;
-    public static String gender;
-    public static String username;
-    public static String password;
-    public static String fitnessGoal;
-    public static String activityLevel;
-    public static double age,weight,height,BMI,BMR,calorieGoal,incrementInCalorieGoal,breakfastIntake,lunchIntake,snackIntake,dinnerIntake,timeToReachGoal;
+    public  String name;
+    public  String gender;
+    public  String username;
+    public  String password;
+    public String intensity;
+    public  String fitnessGoal;
+    public  String activityLevel;
+    public  double age,weight,height,BMI,BMR,calorieGoal,incrementInCalorieGoal,breakfastIntake,lunchIntake,snackIntake,dinnerIntake,timeToReachGoal;
     public  BMRCalculator bmrCalculator;
-    public CalculateIncrement calculateIncrement;
+    public  double weightGoal;
+
+    public String getIntensity() {
+        return intensity;
+    }
+
+    public void setIntensity(String intensity) {
+        this.intensity = intensity;
+    }
+
+    public BMRCalculator getBmrCalculator() {
+        return bmrCalculator;
+    }
+
+    public void setBmrCalculator(BMRCalculator bmrCalculator) {
+        this.bmrCalculator = bmrCalculator;
+    }
+
+    public CalculateIncrement getCalculateIncrement() {
+        return calculateIncrement;
+    }
+
+    public void setCalculateIncrement(CalculateIncrement calculateIncrement) {
+        this.calculateIncrement = calculateIncrement;
+    }
+
     public User(){
 
     }
 
+    public double getWeightGoal() {
+        return weightGoal;
+    }
 
-    public static String getGender() {
+    public void setWeightGoal(double weightGoal) {
+        this.weightGoal = weightGoal;
+    }
+
+    public CalculateIncrement calculateIncrement;
+
+
+
+    public String getGender() {
         return gender;
     }
 
-    public static void setGender(String gender) {
-        User.gender = gender;
+    public void setGender(String gender) {
+        gender = gender;
     }
 
     public String getName() {

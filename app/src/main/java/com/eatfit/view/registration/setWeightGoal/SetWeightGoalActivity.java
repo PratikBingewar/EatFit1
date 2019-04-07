@@ -25,6 +25,7 @@ public class SetWeightGoalActivity extends AppCompatActivity implements AdapterV
     ISetWeightGoalPresenter iSetWeightGoalPresenter;
     String intensityValue;
     double currentWeight, maxWeight,minWeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +103,14 @@ public class SetWeightGoalActivity extends AppCompatActivity implements AdapterV
                 if(intensityValue.isEmpty()){
                     onNotSelectingIntensity();
                 }else{
+                    String goalWeight = weightValue.getText().toString();
+                    goalWeight = goalWeight.substring(0,goalWeight.length() -3);
+                    double weightGoal = Double.parseDouble(goalWeight);
+                    user.setWeightGoal(weightGoal);
+                    user.setIntensity(intensityValue);
+
                     Intent intent = new Intent(SetWeightGoalActivity.this, SetCurrentCalorieConsmptionActivity.class);
+                    intent.putExtra("user",user);
                     startActivity(intent);
                 }
                 break;
