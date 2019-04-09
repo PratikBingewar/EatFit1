@@ -22,14 +22,13 @@ import java.util.Map;
 
 public class RegistrationModel implements IRegisterModel {
 
-    String username;
     SetCurrentCalorieConsmptionActivity setCurrentCalorieConsmptionActivity;
     IRegisterPresenter registerPresenter;
     public final String  CHECK_USER_URL = "https://eatfit223.000webhostapp.com/volley/register.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
-    String name, gender, usrename, password;
+    String name, gender, username, password;
 
     double age, weight, height, BMR, BMI, calorieGoal, increment,
             intakeForBreakFast,intakeForLunch, intakeForSnack,intakeForDinner,timeToReachGoal;

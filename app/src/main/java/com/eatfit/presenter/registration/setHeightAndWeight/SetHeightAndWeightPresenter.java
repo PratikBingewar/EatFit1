@@ -4,10 +4,10 @@ import com.eatfit.view.registration.setHeightAndWeight.SetHeightAndWeightActivit
 
 public class SetHeightAndWeightPresenter implements ISetHeightAndWeightPresenter {
 
-    int height,weight;
+    double height,weight;
     SetHeightAndWeightActivity setHeightAndWeightView;
 
-    public SetHeightAndWeightPresenter(SetHeightAndWeightActivity iSetHeightAndWeightView, int height, int weight){
+    public SetHeightAndWeightPresenter(SetHeightAndWeightActivity iSetHeightAndWeightView, double height, double weight){
         setHeightAndWeightView = iSetHeightAndWeightView;
         this.height = height;
         this.weight = weight;
@@ -16,7 +16,7 @@ public class SetHeightAndWeightPresenter implements ISetHeightAndWeightPresenter
     @Override
     public void checkWeightAndHeight() {
 
-        if(height > 274 || height < 30) {
+        if(height > 2.74 || height < 0.30) {
             onFailedHeightInput();
         }
         else if(weight > 300 || weight < 30) {

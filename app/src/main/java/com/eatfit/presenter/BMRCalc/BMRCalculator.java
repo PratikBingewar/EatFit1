@@ -1,5 +1,7 @@
 package com.eatfit.presenter.BMRCalc;
 
+import android.util.Log;
+
 public class BMRCalculator {
     Double height, weight, age;
     String gender;
@@ -47,16 +49,20 @@ public class BMRCalculator {
         double BMR = 0;
         if (gender.equals("male")) {
             BMR = calculateBMRForMale();
+            Log.d("BMR ",BMR+"");
         }else if(gender.equals("female")){
             BMR = calculateBMRForFemale();
+            Log.d("BMR ",BMR+"");
         }
         return BMR;
     }
 
+    //Mifflin-St Jeor Equation:
     private double calculateBMRForFemale() {
         return 10*weight + 6.25*height - 5*age + 5;
     }
 
+    //Mifflin-St Jeor Equation:
     private double calculateBMRForMale() {
         return 10*weight + 6.25*height - 5*age - 161;
     }

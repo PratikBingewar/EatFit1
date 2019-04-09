@@ -19,7 +19,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterModel implements IRegisterModel {
+public class UsernameCheckerModel implements IRegisterModel {
 
     String username;
     IRegisterView iRegisterView;
@@ -29,7 +29,7 @@ public class RegisterModel implements IRegisterModel {
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
 
-    public RegisterModel(String username, IRegisterView registerView, RegisterPresenter registerPresenter) {
+    public UsernameCheckerModel(String username, IRegisterView registerView, RegisterPresenter registerPresenter) {
         this.username = username;
         this.registerPresenter = registerPresenter;
         this.iRegisterView = registerView;

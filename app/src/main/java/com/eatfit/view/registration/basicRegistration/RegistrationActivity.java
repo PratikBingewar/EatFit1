@@ -3,6 +3,7 @@ package com.eatfit.view.registration.basicRegistration;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,7 +80,8 @@ public class RegistrationActivity extends AppCompatActivity implements IRegister
         }
 
         name = edtName.getText().toString().trim();
-        gender = radioGenderButton.getText().toString().trim();
+        gender = radioGenderButton.getText().toString().toLowerCase();
+        user.setGender(gender);
         if(! edtAge.getText().toString().equals("")){
             age = Integer.parseInt(edtAge.getText().toString().trim());
         }else{
@@ -95,7 +97,6 @@ public class RegistrationActivity extends AppCompatActivity implements IRegister
     @Override
     public void onSuccessfulRegistration() {
         user.setName(name);
-        user.setGender(gender);
         user.setAge(age);
         user.setUsername(email);
         user.setPassword(password);

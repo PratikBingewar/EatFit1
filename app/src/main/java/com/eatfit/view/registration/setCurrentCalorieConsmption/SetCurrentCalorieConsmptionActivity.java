@@ -35,7 +35,7 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
     Spinner breakfastDiet, lunchDiet, snackDiet, dinnerDiet;
     ImageButton breakfastImageButton, lunchImageButton, snackImageButton, dinnerImageButton;
     Button next;
-    String dietIntensityForBreakfast="easy", dietIntensityForLunch="easy", dietIntensityForSnack="easy", dietIntensityForDinner="easy";
+    String dietIntensityForBreakfast="light", dietIntensityForLunch="light", dietIntensityForSnack="light", dietIntensityForDinner="light";
     String dietTypeForBreakfast="common", dietTypeForLunch="common", dietTypeForSnack="common", dietTypeForDinner="common";
     String dietDescForBreakfast, dietDescForLunch, dietDescForSNack, dietDescForDinner;
     Intent intent;
@@ -60,7 +60,7 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
 
         intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
-        Log.d("User info","User info : "+user.name+" "+user.age+" "+user.gender+" "+user.username+" ");
+        Log.d("User info","User info : "+user.name+" "+user.age+" "+user.getGender()+" "+user.username+" ");
 
 
         setIDs();
@@ -475,16 +475,19 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
             String name = user.getName();
             String username = user.getUsername();
             String password = user.getPassword();
-
+            String gender = user.getGender();
             double weight = user.getWeight();
             double height = user.getHeight();
+            Log.d("User info","gender: "+gender);
+
             bmiCalculator = new BMICalculator(height,weight);
             double BMI = bmiCalculator.calculateAndReturnBMI();
+            Log.d("User info: ","BMI: "+BMI);
 
             double age = user.getAge();
-            String gender = user.getGender();
             bmrCalculator = new BMRCalculator(height,weight,age,gender);
             double BMR = bmrCalculator.calculateBMR();
+            Log.d("BMR: ","BMR: "+BMR);
 
             String lifeStyle = user.getActivityLevel();
             String fitnessGoal = user.getFitnessGoal();
@@ -507,24 +510,26 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
             timeToReachGoal = timeToReachGoal * 30;
 
             calculateIncrement = new CalculateIncrement(totalCalories,calorieGoal,intensity);
-            double increment = calculateIncrement.calculateTimePeriodAndIncrement();
+            double increment = calculateIncrement.calculateIncrement();
 
-            String activity = user.getActivityLevel();
-            calcActivityID = new CalcActivityID(activity);
+            calcActivityID = new CalcActivityID(user.getActivityLevel());
             int activityID = calcActivityID.returnActivityID();
 
-            calcIntensityID = new CalcIntensityID(intensity);
-            int intensityID = calcActivityID.returnActivityID();
+            calcIntensityID = new CalcIntensityID(user.getIntensity());
+            int intensityID = calcIntensityID.returnIntnsityID();
 
-            calcFitnessID = new CalcFitnessID(fitnessGoal);
+            calcFitnessID = new CalcFitnessID(user.getFitnessGoal());
             int fitnessID = calcFitnessID.returnFitnessID();
 
             RegistrationModel registerModel = new RegistrationModel(name,gender,age,weight,height,username,password,BMR,BMI,calorieGoal,increment,intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner,timeToReachGoal,intensityID,fitnessID,activityID,this);
+            registerModel.authenticate();
 
-            Intent intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
-            intent.putExtra("user",user);
-            startActivity(intent);
-            finish();
+            Log.d("User object final: ",name+" "+gender+" "+age+" "+weight+" "+height+" "+username+" "+password+" "+BMR+" "+BMI+" "+calorieGoal+" "+increment+" "+intakeForBreakFast+" "+intakeForLunch+" "+intakeForSnack+" "+intakeForDinner+" "+timeToReachGoal+" "+user.getIntensity()+" "+intensityID+" "+user.getFitnessGoal()+" "+fitnessID+" "+user.getActivityLevel()+" "+activityID+" "+this.getLocalClassName());
+
+//            Intent intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
+//            intent.putExtra("user",user);
+//            startActivity(intent);
+//            finish();
         }
 
     }

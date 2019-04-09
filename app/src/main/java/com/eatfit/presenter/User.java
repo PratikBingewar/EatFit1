@@ -62,7 +62,7 @@ public class User implements Serializable {
     }
 
     public void setGender(String gender) {
-        gender = gender;
+        this.gender = gender;
     }
 
     public String getName() {
@@ -97,6 +97,9 @@ public class User implements Serializable {
         this.fitnessGoal = fitnessGoal;
     }
 
+    //    Exercise: 15-30 minutes of elevated heart rate activity.
+//    Intense exercise: 45-120 minutes of elevated heart rate activity.
+//    Very intense exercise: 2+ hours of elevated heart rate activity.
     public String getActivityLevel() {
         return activityLevel;
     }
@@ -129,39 +132,21 @@ public class User implements Serializable {
         this.height = height;
     }
 
-    public double getBMI() {
-        bmrCalculator = new BMRCalculator(height,weight,age,gender);
-        BMR = bmrCalculator.calculateBMR();
-        return BMI;
-    }
+    //    Less than 18.5 = Underweight
+//    Between 18.5 to 24.9 = Normal
+//    Between 25 to 29.9 = Overweight
+//  30 or more than 30 = Obese
+    public  void calculateBMI(){
 
-    public void setBMI(double BMI) {
-        this.BMI = BMI;
+        BMI = weight / (height*height);
     }
 
     public double getBMR() {
+        bmrCalculator = new BMRCalculator(height,weight,age,gender);
+        BMR = bmrCalculator.calculateBMR();
         return BMR;
     }
 
-    public void setBMR(double BMR) {
-        this.BMR = BMR;
-    }
-
-    public double getCalorieGoal() {
-        return calorieGoal;
-    }
-
-    public void setCalorieGoal(double calorieGoal) {
-        this.calorieGoal = calorieGoal;
-    }
-
-    public double getIncrementInCalorieGoal() {
-        return incrementInCalorieGoal;
-    }
-
-    public void setIncrementInCalorieGoal(double incrementInCalorieGoal) {
-        this.incrementInCalorieGoal = incrementInCalorieGoal;
-    }
 
     public double getBreakfastIntake() {
         return breakfastIntake;
@@ -203,8 +188,6 @@ public class User implements Serializable {
         this.timeToReachGoal = timeToReachGoal;
     }
 
-    public  void calculateBMI(){
-        BMI = (Double) weight / ( (height*height) /100);
-    }
+
 
 }

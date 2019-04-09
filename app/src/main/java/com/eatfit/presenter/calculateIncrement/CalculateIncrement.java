@@ -13,29 +13,10 @@ public class CalculateIncrement {
         this.intensity = intensity;
     }
 
-    public double calculateTimePeriodAndIncrement(){
-        checkIntensityAndSetIncrementInCalories();
-        calculateTimePeriod();
 
-        return timePeriodToReachGoal;
+    public double calculateIncrement() {
+        incrementEachDay = (calorieConsumptionGoal - currentCalorieConsumption) / incrementEachDay;
+        return incrementEachDay;
     }
 
-    private void calculateTimePeriod() {
-        timePeriodToReachGoal = (calorieConsumptionGoal - currentCalorieConsumption) / incrementEachDay;
-    }
-
-    private void checkIntensityAndSetIncrementInCalories() {
-        intensity = intensity.toLowerCase();
-
-        if(intensity.equals("easy")) {
-            incrementEachDay = 30;
-
-        }else if(intensity.equals("medium")){
-            incrementEachDay = 60;
-
-        }else if(intensity.equals("hard")) {
-            incrementEachDay = 100;
-
-        }
-    }
 }

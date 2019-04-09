@@ -2,7 +2,7 @@ package com.eatfit.presenter.registration.basicRegistration;
 
 import com.eatfit.model.Validator;
 import com.eatfit.model.registration.IRegisterModel;
-import com.eatfit.model.registration.RegisterModel;
+import com.eatfit.model.registration.UsernameCheckerModel;
 import com.eatfit.view.registration.basicRegistration.RegistrationActivity;
 
 public class RegisterPresenter implements IRegisterPresenter {
@@ -88,9 +88,9 @@ public class RegisterPresenter implements IRegisterPresenter {
 
     //on successful validation
     public void onSuccessfulValidation(String name, String gender, int age, String email, String password){
-        //iRegisterModel = new RegisterModel(name,gender,age,email,password,registerView,this);
+        //iRegisterModel = new UsernameCheckerModel(name,gender,age,email,password,registerView,this);
         // iRegisterModel.authenticate();
-        iRegisterModel = new RegisterModel(email,registerView,this);
+        iRegisterModel = new UsernameCheckerModel(email,registerView,this);
         iRegisterModel.authenticate();
     }
 

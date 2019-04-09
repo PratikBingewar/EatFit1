@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +25,7 @@ public class SetHeightAndWeightActivity extends AppCompatActivity implements Ada
     Button next;
     Spinner spinner;
     String activityLevel;
-    int heightVal,weightVal;
+    double heightVal,weightVal;
     User user;
     ISetHeightAndWeightPresenter iSetHeightAndWeightPresenter;
 
@@ -68,8 +69,10 @@ public class SetHeightAndWeightActivity extends AppCompatActivity implements Ada
             onEmptyFieldOfWeightError();
         }
         else {
-            heightVal = Integer.parseInt(height.getText().toString());
+            heightVal = Double.parseDouble(height.getText().toString());
+            heightVal = heightVal / 100;
             weightVal = Integer.parseInt(weight.getText().toString());
+            Log.d("User Height and Weight ",heightVal+" "+weightVal);
             iSetHeightAndWeightPresenter = new SetHeightAndWeightPresenter(this,heightVal,weightVal);
             iSetHeightAndWeightPresenter.checkWeightAndHeight();
         }
