@@ -3,6 +3,7 @@ package com.eatfit.view.registration.setCurrentCalorieConsmption;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,8 +35,8 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
     Spinner breakfastDiet, lunchDiet, snackDiet, dinnerDiet;
     ImageButton breakfastImageButton, lunchImageButton, snackImageButton, dinnerImageButton;
     Button next;
-    String dietIntensityForBreakfast, dietIntensityForLunch, dietIntensityForSnack, dietIntensityForDinner;
-    String dietTypeForBreakfast, dietTypeForLunch, dietTypeForSnack, dietTypeForDinner;
+    String dietIntensityForBreakfast="easy", dietIntensityForLunch="easy", dietIntensityForSnack="easy", dietIntensityForDinner="easy";
+    String dietTypeForBreakfast="common", dietTypeForLunch="common", dietTypeForSnack="common", dietTypeForDinner="common";
     String dietDescForBreakfast, dietDescForLunch, dietDescForSNack, dietDescForDinner;
     Intent intent;
     User user;
@@ -59,6 +60,8 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
 
         intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        Log.d("User info","User info : "+user.name+" "+user.age+" "+user.gender+" "+user.username+" ");
+
 
         setIDs();
         setStringsToSpinners();
