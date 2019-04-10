@@ -33,6 +33,7 @@ public class RegistrationModel implements IRegisterModel {
     double age, weight, height, BMR, BMI, calorieGoal, increment,
             intakeForBreakFast,intakeForLunch, intakeForSnack,intakeForDinner,timeToReachGoal;
 
+
     int fitnessID,activityID,intensityID;
 
     public RegistrationModel(String name, String gender, double age, double weight, double height,
@@ -91,23 +92,23 @@ public class RegistrationModel implements IRegisterModel {
                 Map<String, String> param = new HashMap<String,String>();
                 param.put("name",name);
                 param.put("gender",gender);
-                param.put("age", String.valueOf(age));
-                param.put("weight", String.valueOf(weight));
-                param.put("height", String.valueOf(height));
+                param.put("age", Double.toString(age));
+                param.put("weight", Double.toString(weight));
+                param.put("height", Double.toString(height));
                 param.put("username",username);
                 param.put("password",password);
-                param.put("BMI", String.valueOf(BMI));
-                param.put("BMR", String.valueOf(BMR));
-                param.put("calorie_goal", String.valueOf(calorieGoal));
-                param.put("increment", String.valueOf(increment));
-                param.put("breakfast_intake", String.valueOf(intakeForBreakFast));
-                param.put("lunch_intake", String.valueOf(intakeForLunch));
-                param.put("snack_intake", String.valueOf(intakeForSnack));
-                param.put("dinner_intake", String.valueOf(intakeForDinner));
-                param.put("time_to_reach_goal", String.valueOf(timeToReachGoal));
-                param.put("intensity_id", String.valueOf(intensityID));
-                param.put("fitness_goal_id", String.valueOf(fitnessID));
-                param.put("activity_id", String.valueOf(activityID));
+                param.put("BMI", Double.toString(BMI));
+                param.put("BMR", Double.toString(BMR));
+                param.put("calorie_goal", Double.toString(calorieGoal));
+                param.put("increment", Double.toString(increment));
+                param.put("breakfast_intake", Double.toString(intakeForBreakFast));
+                param.put("lunch_intake", Double.toString(intakeForLunch));
+                param.put("snack_intake", Double.toString(intakeForSnack));
+                param.put("dinner_intake", Double.toString(intakeForDinner));
+                param.put("time_to_reach_goal", Double.toString(timeToReachGoal));
+                param.put("intensity_id", Integer.toString(intensityID));
+                param.put("fitness_goal_id", Integer.toString(fitnessID));
+                param.put("activity_id", Integer.toString(activityID));
                 return param;
             }
         };
