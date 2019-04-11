@@ -410,6 +410,16 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
             dietTypeForDinner = parent.getItemAtPosition(position).toString();
         }
 
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
         if (view == breakfastImageButton) {
             dietIntensityForBreakfast = breakfastIntensity.getSelectedItem().toString();
             dietTypeForBreakfast = breakfastIntensity.getSelectedItem().toString();
@@ -454,24 +464,8 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
                 setInfoToDinnerImageButton();
             }
         }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(dietIntensityForBreakfast.isEmpty() || dietTypeForBreakfast.isEmpty() ||
-                dietIntensityForLunch.isEmpty() || dietTypeForLunch.isEmpty()  ||
-                dietIntensityForSnack.isEmpty() || dietTypeForSnack.isEmpty() ||
-                dietIntensityForDinner.isEmpty() || dietTypeForDinner.isEmpty() ){
-
-            Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Select all values",Toast.LENGTH_SHORT).show();
-
-        }
-        else {
+        else
+        {
             String name = user.getName();
             String username = user.getUsername();
             String password = user.getPassword();
@@ -521,21 +515,31 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
             calcFitnessID = new CalcFitnessID(user.getFitnessGoal());
             int fitnessID = calcFitnessID.returnFitnessID();
 
-            RegistrationModel registerModel = new RegistrationModel(name,gender,age,weight,height,username,password,BMR,BMI,calorieGoal,increment,intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner,timeToReachGoal,intensityID,fitnessID,activityID,this);
+            RegistrationModel registerModel = new RegistrationModel(name,gender,age,weight,
+                    height,username,password,BMR,BMI,calorieGoal,increment,
+                    intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner,
+                    timeToReachGoal,intensityID,fitnessID,activityID,this);
             registerModel.authenticate();
 
-            Log.d("User object final: ",name+" "+gender+" "+age+" "+weight+" "+height+" "+username+" "+password+" "+BMR+" "+BMI+" "+calorieGoal+" "+increment+" "+intakeForBreakFast+" "+intakeForLunch+" "+intakeForSnack+" "+intakeForDinner+" "+timeToReachGoal+" "+user.getIntensity()+" "+intensityID+" "+user.getFitnessGoal()+" "+fitnessID+" "+user.getActivityLevel()+" "+activityID+" "+this.getLocalClassName());
+            Log.d("User object final: ",
+                    name+" "+gender+" "+age+" "+weight+" "+height+" "
+                            +username+" "+password+" "+BMR+" "+BMI+" "
+                            +calorieGoal+" "+increment+" "+intakeForBreakFast+" "
+                            +intakeForLunch+" "+intakeForSnack+" "+intakeForDinner+" "
+                            +timeToReachGoal+" "+user.getIntensity()+" "+intensityID+" "
+                            +user.getFitnessGoal()+" "+fitnessID+" "+user.getActivityLevel()+" "
+                            +activityID+" "+this.getLocalClassName());
 
-//            Intent intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
-//            intent.putExtra("user",user);
-//            startActivity(intent);
-//            finish();
         }
 
     }
 
     public  void onSuccessfulRegistration(){
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
+            intent.putExtra("user",user);
+            startActivity(intent);
+            finish();
     }
     public  void onError(String error){
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,error,Toast.LENGTH_SHORT).show();

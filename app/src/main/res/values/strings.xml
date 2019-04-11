@@ -1,4 +1,6 @@
 <resources>
+    <string name="search_hint">Search Food</string>
+
     <string name="app_name">EatFit</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -155,8 +157,6 @@
     </string-array>
 
 
-
-
     <string name="light_english_breakfast">The light English Breakfast contains
         \nOne fried egg,One link sausage,\n
         One slice Canadian bacon,One large slice bread,One cup beans.
@@ -207,8 +207,6 @@
 
     <string name="heavy_english_dinner">The heavy English Breakfast contains
     </string>
-
-
 
 
     <string name="light_north_indian_breakfast">The light North Indian Breakfast contains
@@ -263,9 +261,6 @@
     </string>
 
 
-
-
-
     <string name="light_south_indian_breakfast">The light south indian Breakfast contains
         \n3 millet Idlis / 1 Dosa / 2 Medu Vada \n
         1 small bowl sambar,and coconut chutney.
@@ -316,11 +311,6 @@
 
     <string name="heavy_south_indian_dinner">The heavy south indian Breakfast contains
     </string>
-
-
-
-
-
 
 
     <string name="light_maharashtrian_breakfast">The light Maharashtrian Breakfast contains
@@ -374,9 +364,6 @@
     </string>
 
 
-
-
-
     <string name="light_common_breakfast">The light Common Breakfast contains
         \nOne cup tea/ coffee or milk \n
         ,buiscuits or big cup of oats.
@@ -407,7 +394,6 @@
 
     <string name="heavy_common_snack">The heavy Common Breakfast contains
     </string>
-
 
 
     <string name="light_common_lunch">The light Common Breakfast contains

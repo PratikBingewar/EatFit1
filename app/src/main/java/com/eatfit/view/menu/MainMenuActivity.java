@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.eatfit.R;
 import com.eatfit.view.addFood.AddFoodActivity;
+import com.eatfit.view.searchFood.SearchFoodActivity;
 
 public class MainMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +33,7 @@ public class MainMenuActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, AddFoodActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, SearchFoodActivity.class);
                 startActivity(intent);
             }
         });
