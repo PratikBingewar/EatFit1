@@ -464,8 +464,7 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
                 setInfoToDinnerImageButton();
             }
         }
-        else
-        {
+        if(view == next) {
             String name = user.getName();
             String username = user.getUsername();
             String password = user.getPassword();
@@ -515,12 +514,6 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
             calcFitnessID = new CalcFitnessID(user.getFitnessGoal());
             int fitnessID = calcFitnessID.returnFitnessID();
 
-            RegistrationModel registerModel = new RegistrationModel(name,gender,age,weight,
-                    height,username,password,BMR,BMI,calorieGoal,increment,
-                    intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner,
-                    timeToReachGoal,intensityID,fitnessID,activityID,this);
-            registerModel.authenticate();
-
             Log.d("User object final: ",
                     name+" "+gender+" "+age+" "+weight+" "+height+" "
                             +username+" "+password+" "+BMR+" "+BMI+" "
@@ -530,13 +523,21 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
                             +user.getFitnessGoal()+" "+fitnessID+" "+user.getActivityLevel()+" "
                             +activityID+" "+this.getLocalClassName());
 
+            RegistrationModel registerModel = new RegistrationModel(name,gender,age,weight,
+                    height,username,password,BMR,BMI,calorieGoal,increment,
+                    intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner,
+                    timeToReachGoal,intensityID,fitnessID,activityID,this);
+            registerModel.authenticate();
+
+
+
         }
 
     }
 
     public  void onSuccessfulRegistration(){
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
+        intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
             intent.putExtra("user",user);
             startActivity(intent);
             finish();

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.eatfit.R;
+import com.eatfit.presenter.User;
 import com.eatfit.presenter.login.ILoginPresenter;
 import com.eatfit.presenter.login.LoginRepresenter;
 import com.eatfit.view.forgorPassword.ForgotPasswordActivity;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     Button login, register, forgotPassword;
     ILoginPresenter loginPresenter;
     boolean setPasswordViewType;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
 
     @Override
     public void onSuccessfulLogin() {
+        user = new User();
+        user.setUsername(txtEmail.getText().toString());
+        user.setPassword(txtPassword.getText().toString());
+        Log.d("username ",user.getUsername());
+        Log.d("password ",user.getPassword());
+
         Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
+        intent.putExtra("user",user);
         startActivity(intent);
         finish();
     }

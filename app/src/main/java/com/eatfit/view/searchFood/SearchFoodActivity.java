@@ -75,7 +75,7 @@ public class SearchFoodActivity extends AppCompatActivity {
                         food[i] = new Food();
                         Log.e("name ",""+ids[0]) ;
                         Log.d("caloires",ids[1]);
-                        food[i].caloies = Double.parseDouble(ids[1]);
+                        food[i].calories = Double.parseDouble(ids[1]);
                         food[i].name= ids[0];
                         foodRepo.insert(food[i]);
                     }

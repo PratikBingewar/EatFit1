@@ -6,6 +6,7 @@ import com.eatfit.presenter.calculateIncrement.CalculateIncrement;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public int ID;
     public  String name;
     public  String gender;
     public  String username;
@@ -16,6 +17,59 @@ public class User implements Serializable {
     public  double age,weight,height,BMI,BMR,calorieGoal,incrementInCalorieGoal,breakfastIntake,lunchIntake,snackIntake,dinnerIntake,timeToReachGoal;
     public  BMRCalculator bmrCalculator;
     public  double weightGoal;
+    public int intensityID, activityID, fitnessGoalID;
+
+    public int getIntensityID() {
+        return intensityID;
+    }
+
+    public void setIntensityID(int intensityID) {
+        this.intensityID = intensityID;
+    }
+
+    public int getActivityID() {
+        return activityID;
+    }
+
+    public void setActivityID(int activityID) {
+        this.activityID = activityID;
+    }
+
+    public int getFitnessGoalID() {
+        return fitnessGoalID;
+    }
+
+    public void setFitnessGoalID(int fitnessGoalID) {
+        this.fitnessGoalID = fitnessGoalID;
+    }
+
+    public double getBMI() {
+        return BMI;
+    }
+
+    public void setBMI(double BMI) {
+        this.BMI = BMI;
+    }
+
+    public void setBMR(double BMR) {
+        this.BMR = BMR;
+    }
+
+    public double getCalorieGoal() {
+        return calorieGoal;
+    }
+
+    public void setCalorieGoal(double calorieGoal) {
+        this.calorieGoal = calorieGoal;
+    }
+
+    public double getIncrementInCalorieGoal() {
+        return incrementInCalorieGoal;
+    }
+
+    public void setIncrementInCalorieGoal(double incrementInCalorieGoal) {
+        this.incrementInCalorieGoal = incrementInCalorieGoal;
+    }
 
     public String getIntensity() {
         return intensity;
@@ -45,6 +99,16 @@ public class User implements Serializable {
 
     }
 
+    public double getID() {
+        return this.ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public CalculateIncrement calculateIncrement;
+
     public double getWeightGoal() {
         return weightGoal;
     }
@@ -52,10 +116,6 @@ public class User implements Serializable {
     public void setWeightGoal(double weightGoal) {
         this.weightGoal = weightGoal;
     }
-
-    public CalculateIncrement calculateIncrement;
-
-
 
     public String getGender() {
         return gender;

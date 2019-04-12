@@ -10,7 +10,17 @@
             android:title="Basic Profile" />
 
         <item
+            android:id="@+id/suggest_food_on_main_menu_drawer"
+            android:icon="@drawable/ic_add_black_48dp_00"
+            android:title="Suggest Food" />
+
+        <item
             android:id="@+id/add_food_on_main_menu_drawer"
+            android:icon="@drawable/ic_add_food"
+            android:title="Add Food" />
+
+        <item
+            android:id="@+id/details_on_main_menu_drawer"
             android:icon="@drawable/ic_visibility_black_24dp"
             android:title="Details" />
 
@@ -20,19 +30,19 @@
             android:title="Reminder" />
 
         <item
-            android:id="@+id/graph_on_main_menu_drawer"
-            android:icon="@drawable/ic_graph"
-            android:title="Graph" />
-
-        <item
             android:id="@+id/change_current_weight_on_main_menu_drawer"
             android:icon="@drawable/ic_add_black_48dp_00"
             android:title="Change Weight" />
 
         <item
             android:id="@+id/change_current_fitness_goal_on_main_menu_drawer"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_goal"
             android:title="Change Fitness Goal" />
+
+        <item
+            android:id="@+id/logout_main_menu_drawer"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
 
 
     </group>

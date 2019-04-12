@@ -22,8 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //All necessary tables you like to create will create here
 
         String CREATE_TABLE_FOOD = "CREATE TABLE " + Food.TABLE  + "("
-                + Food.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + Food.KEY_name + " TEXT, "
+                + Food.KEY_name + " TEXT PRIMARY KEY AUTOINCREMENT ,"
                 + Food.KEY_calories + " REAL )";
 
         db.execSQL(CREATE_TABLE_FOOD);

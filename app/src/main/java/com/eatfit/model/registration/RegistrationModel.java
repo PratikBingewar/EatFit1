@@ -11,8 +11,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.eatfit.presenter.registration.basicRegistration.IRegisterPresenter;
-import com.eatfit.presenter.registration.basicRegistration.RegisterPresenter;
-import com.eatfit.view.registration.basicRegistration.IRegisterView;
 import com.eatfit.view.registration.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity;
 
 import org.json.JSONObject;
@@ -42,7 +40,6 @@ public class RegistrationModel implements IRegisterModel {
                              double intakeForLunch, double intakeForSnack, double intakeForDinner,
                              double timeToReachGoal, int intensityID, int fitnessID, int activityID,
                              SetCurrentCalorieConsmptionActivity setCurrentCalorieConsmptionActivity) {
-
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -50,15 +47,27 @@ public class RegistrationModel implements IRegisterModel {
         this.height = height;
         this.username = username;
         this.password = password;
+
         this.BMR = bmr;
+        this.BMR = checkSigns(this.BMR);
         this.BMI = bmi;
+        this.BMI = Math.round(this.BMI * 100D) / 100D;
+        Log.d("rounded BMI",""+this.BMI);
+        this.BMI = checkSigns(this.BMI);
         this.calorieGoal = calorieGoal;
+        this.calorieGoal = checkSigns(this.calorieGoal);
         this.increment = increment;
+        this.increment = checkSigns(this.increment);
         this.intakeForBreakFast = intakeForBreakFast;
+        this.intakeForBreakFast = checkSigns(this.intakeForBreakFast);
         this.intakeForSnack = intakeForSnack;
+        this.intakeForSnack = checkSigns(this.intakeForSnack);
         this.intakeForLunch = intakeForLunch;
+        this.intakeForLunch = checkSigns(this.intakeForLunch);
         this.intakeForDinner = intakeForDinner;
+        this.intakeForDinner = checkSigns(this.intakeForDinner);
         this.timeToReachGoal = timeToReachGoal;
+        this.timeToReachGoal = checkSigns(this.timeToReachGoal);
 
         this.intensityID = intensityID;
         this.fitnessID = fitnessID;
@@ -68,6 +77,13 @@ public class RegistrationModel implements IRegisterModel {
 
         requestQueue = Volley.newRequestQueue((Context) setCurrentCalorieConsmptionActivity);
 
+    }
+
+    private double checkSigns(double val) {
+        if(val < 0) {
+            val = val* (-1);
+        }
+        return val;
     }
 
     @Override
@@ -90,6 +106,10 @@ public class RegistrationModel implements IRegisterModel {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
+                JSONObject jsonObject=new JSONObject();
+
+
+
                 param.put("name",name);
                 param.put("gender",gender);
                 param.put("age", Double.toString(age));
@@ -99,13 +119,13 @@ public class RegistrationModel implements IRegisterModel {
                 param.put("password",password);
                 param.put("BMI", Double.toString(BMI));
                 param.put("BMR", Double.toString(BMR));
-                param.put("calorie_goal", Double.toString(calorieGoal));
-                param.put("increment", Double.toString(increment));
+                param.put("calorie_goal", Double.toString(2000));
+                param.put("increment", Double.toString(100));
                 param.put("breakfast_intake", Double.toString(intakeForBreakFast));
                 param.put("lunch_intake", Double.toString(intakeForLunch));
                 param.put("snack_intake", Double.toString(intakeForSnack));
                 param.put("dinner_intake", Double.toString(intakeForDinner));
-                param.put("time_to_reach_goal", Double.toString(timeToReachGoal));
+                param.put("time_to_reach_goal", Double.toString(150));
                 param.put("intensity_id", Integer.toString(intensityID));
                 param.put("fitness_goal_id", Integer.toString(fitnessID));
                 param.put("activity_id", Integer.toString(activityID));
@@ -122,7 +142,7 @@ public class RegistrationModel implements IRegisterModel {
     public void checkResponse(String response){
         try {
             JSONObject obj = new JSONObject(response);
-            String res=obj.getString("res");
+            String res = obj.getString("res");
 
             if (res.equals("Y")) {
                 Log.d("Pratik","In yes of Model error");
@@ -137,6 +157,9 @@ public class RegistrationModel implements IRegisterModel {
             Log.d("Pratik","In exception ");
             changeConnectionStatus(false);
             Log.d("pratik",ex.toString());
+            Log.d("pratik",""+ex.getLocalizedMessage()+ex.fillInStackTrace()+" "
+                    +ex.getCause());
+            ex.printStackTrace();
             setCurrentCalorieConsmptionActivity.onError(ex.toString());
         }
     }
