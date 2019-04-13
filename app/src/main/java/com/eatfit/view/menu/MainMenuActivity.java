@@ -49,15 +49,6 @@ public class MainMenuActivity extends AppCompatActivity
         intent = getIntent();
 
         user = (User) intent.getSerializableExtra("user");
-        Log.d("username ",user.getUsername());
-        Log.d("password ",user.getPassword());
-        getUserInfoViaModel(user);
-//        intent = getIntent();
-//        user = (User) intent.getSerializableExtra("user");
-//        name = user.getName().toString();
-//        email = user.getUsername().toString();
-//        Log.d("name and email",name+" "+email);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -82,13 +73,6 @@ public class MainMenuActivity extends AppCompatActivity
 
 
     }
-
-    private void getUserInfoViaModel(User user) {
-
-        GetUserInfoModel getUserInfoModel = new GetUserInfoModel(user,this);
-        getUserInfoModel.getUserObject();
-    }
-
 
     @Override
     public void onBackPressed() {
@@ -169,8 +153,6 @@ public class MainMenuActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-//        nameOnMainMenu.setText(name);
-//        emailOnMainMenu.setText(email);
         return true;
     }
 

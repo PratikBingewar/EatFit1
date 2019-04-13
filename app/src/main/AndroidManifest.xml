@@ -13,8 +13,11 @@
         android:roundIcon="@mipmap/ic_food_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.registration.setCurrentCalorieConsmption.FoodInfoActivity"></activity>
-        <activity android:name=".view.searchFood.SearchFoodActivity" >
+        <activity android:name=".view.basicProfile.UpdatePassword"></activity>
+        <activity android:name=".view.basicProfile.UpdateUserName" />
+        <activity android:name=".view.basicProfile.UpdateName" />
+        <activity android:name=".view.registration.setCurrentCalorieConsmption.FoodInfoActivity" />
+        <activity android:name=".view.searchFood.SearchFoodActivity">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -45,7 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.menu.MainMenuActivity"
             android:label="@string/title_activity_main_menu"
