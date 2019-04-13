@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,8 @@ import com.eatfit.view.reminder.SetReminderActivity;
 import com.eatfit.view.searchFood.SearchFoodActivity;
 import com.eatfit.view.suggestFood.FoodSuggestionActivity;
 
+import java.util.ArrayList;
+
 public class MainMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,10 +42,19 @@ public class MainMenuActivity extends AppCompatActivity
     User user;
     TextView nameOnMainMenu,emailOnMainMenu;
     String name, email;
+    ListView listView;
+    ArrayList<String> list;
+    ArrayAdapter<String > adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        getList();
+
+        listView = findViewById(R.id.listView);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
+        listView.setAdapter(adapter);
 
         nameOnMainMenu = findViewById(R.id.name_on_main_menu);
         emailOnMainMenu = findViewById(R.id.username_on_main_menu);
@@ -71,7 +84,20 @@ public class MainMenuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
 
+    private void getList() {
+        list = new ArrayList<>();
+        list.add("apple");
+        list.add("banana");
+        list.add("pineapple");
+        list.add("orange");
+        list.add("lychee");
+        list.add("gavava");
+        list.add("peech");
+        list.add("melon");
+        list.add("watermelon");
+        list.add("papaya");
     }
 
     @Override

@@ -22,10 +22,10 @@ public class SearchFoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_food);
 
-        searchView = (SearchView) findViewById(R.id.searchView);
-        listView = (ListView) findViewById(R.id.lv1);
+        searchView =  findViewById(R.id.searchView);
+        listView =  findViewById(R.id.lv1);
 
-       getList();
+        getList();
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         listView.setAdapter(adapter);
@@ -48,19 +48,33 @@ public class SearchFoodActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                return false;
+            }
+
+            @Override
+            public boolean onSuggestionClick(int position) {
+                String selectedItem = (String)adapter.getItem(position);
+                Toast.makeText(SearchFoodActivity.this,"Item Seleceted: "+selectedItem,Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        })  ;
     }
 
     private void getList() {
         list = new ArrayList<>();
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Pineapple");
-        list.add("Orange");
-        list.add("Lychee");
-        list.add("Gavava");
-        list.add("Peech");
-        list.add("Melon");
-        list.add("Watermelon");
-        list.add("Papaya");
+        list.add("apple");
+        list.add("banana");
+        list.add("pineapple");
+        list.add("orange");
+        list.add("lychee");
+        list.add("gavava");
+        list.add("peech");
+        list.add("melon");
+        list.add("watermelon");
+        list.add("papaya");
     }
 }

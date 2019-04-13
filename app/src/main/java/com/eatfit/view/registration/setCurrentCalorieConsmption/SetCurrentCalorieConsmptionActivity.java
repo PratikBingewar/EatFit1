@@ -538,9 +538,9 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
     public  void onSuccessfulRegistration(){
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
         intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
-            intent.putExtra("user",user);
-            startActivity(intent);
-            finish();
+        intent.putExtra("user",user);
+        startActivity(intent);
+        finish();
     }
     public  void onError(String error){
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,error,Toast.LENGTH_SHORT).show();
