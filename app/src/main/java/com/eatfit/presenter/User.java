@@ -18,6 +18,19 @@ public class User implements Serializable {
     public  BMRCalculator bmrCalculator;
     public  double weightGoal;
     public int intensityID, activityID, fitnessGoalID;
+    public double currentCalorieLevel;
+
+    public double getCurrentCalorieLevel() {
+        return currentCalorieLevel;
+    }
+
+    public void setCurrentCalorieLevel(double currentCalorieLevel) {
+        this.currentCalorieLevel = currentCalorieLevel;
+    }
+
+    public void updateCurrentCalorieLevel(double currentCalorieLevel) {
+        this.currentCalorieLevel += currentCalorieLevel;
+    }
 
     public int getIntensityID() {
         return intensityID;
