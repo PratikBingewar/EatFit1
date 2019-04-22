@@ -9,21 +9,215 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.eatfit.view.addFood.AddFoodActivity">
 
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lv1"
-        android:divider="#ad5"
-        android:dividerHeight="2dp"
-        android:layout_below="@+id/food_search_bar"/>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="22dp"
+        android:orientation="vertical"
+        android:padding="@dimen/dots_height">
 
-    <SearchView
-        android:id="@+id/food_search_bar"
-        android:layout_width="378dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:iconifiedByDefault="false"
-        android:layout_margin="20dp"
-        android:queryHint="Search Here" />
+        <TextView
+            android:id="@+id/selected_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dots_height"
+            android:text="food"
+            android:textColor="@color/dot_dark_screen1"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/qty"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:text="qty:"
+                android:textStyle="bold"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/value_of_qty"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:inputType="number|numberDecimal"
+                android:text="1"
+                android:textColor="#f00" />
+
+            <TextView
+                android:id="@+id/unit"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textSize="25dp"
+                android:gravity="left"
+                android:text="unit"
+                android:textStyle="bold"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/qty_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sub_food_qty"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:text="sub"
+                android:textStyle="bold"
+                ></Button>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/add_food_qty"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:text="add"
+                android:textStyle="bold"
+                ></Button>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:padding="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/carbs"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:text="carbs"
+                android:gravity="center"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/proteins"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:layout_alignParentLeft="true"
+                android:text="proteins"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/fats"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:text="fats"
+                android:gravity="center"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/total_calories"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:text="total calories"
+                android:gravity="center"
+                android:layout_alignParentRight="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:padding="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/carbs_qty"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:gravity="center"
+                android:text="carbs_qty"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/protein_qty"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:gravity="center"
+                android:layout_alignParentLeft="true"
+                android:text="protein_qty" />
+
+            <TextView
+                android:id="@+id/fats_qty"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:text="fats_qty"
+                android:gravity="center"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/total_cal_qty"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:textColor="#f00"
+                android:text="total calories qty"
+                android:gravity="center"
+                android:layout_alignParentRight="true"/>
+
+        </LinearLayout>
+
+
+        <!-- Intensity Level -->
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/shape_login"
+            android:backgroundTint="@color/black"
+            android:text="save"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 </RelativeLayout>
