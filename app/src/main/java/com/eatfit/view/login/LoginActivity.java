@@ -10,9 +10,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.eatfit.R;
+import com.eatfit.model.getUserData.GetUserDataModel;
+import com.eatfit.model.login.ILoginModel;
+import com.eatfit.model.login.LoginModel;
 import com.eatfit.presenter.User;
 import com.eatfit.presenter.login.ILoginPresenter;
 import com.eatfit.presenter.login.LoginRepresenter;
+import com.eatfit.view.connetionLost.LostConnectionActivity;
 import com.eatfit.view.forgorPassword.ForgotPasswordActivity;
 import com.eatfit.view.menu.MainMenuActivity;
 import com.eatfit.view.registration.basicRegistration.RegistrationActivity;
@@ -24,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     ILoginPresenter loginPresenter;
     boolean setPasswordViewType;
     User user;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         forgotPassword = findViewById(R.id.btn_forgot_password);
         forgotPassword.setOnClickListener(this);
         loginPresenter = new LoginRepresenter(this);
+
     }
 
     @Override
@@ -74,14 +80,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     public void onSuccessfulLogin() {
         user = new User();
         user.setUsername(txtEmail.getText().toString());
+        username = user.getUsername();
         user.setPassword(txtPassword.getText().toString());
         Log.d("username ",user.getUsername());
         Log.d("password ",user.getPassword());
 
-        Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
-        finish();
+        GetUserDataModel getUserDataModel = new GetUserDataModel(username,this);
+        getUserDataModel.getUerInfo();
+
     }
 
     @Override
@@ -105,5 +111,31 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
 
     public void makeToast(String msg) {
         Toast.makeText(LoginActivity.this,""+msg,Toast.LENGTH_SHORT).show();
+    }
+
+    public void onSuccessfulInfo() {
+        Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
+        intent.putExtra("user",username);
+
+        intent.putExtra("progress",0);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onfailedInternetConnection() {
+        Intent intent = new Intent(LoginActivity.this, LostConnectionActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void printAllStrings(String[] token) {
+        for (int i=0;i<token.length;i++){
+            Toast.makeText(LoginActivity.this,(i+1)+" "+token[i],Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void setUserInfo(String[] token, double calorie_consumption) {
+
     }
 }

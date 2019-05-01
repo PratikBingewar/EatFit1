@@ -5,17 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.eatfit.R;
+import com.eatfit.model.getUserInfo.GetUserInfoModel;
 import com.eatfit.presenter.User;
 
 public class BasicProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     Intent intent;
     Button editName, editPassword, editUsername;
-    static User user;
+    User user;
     TextView age,name,gender,emailOnTop,nameOnTop,BMI,BMR,username;
+    String USERNAME;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +34,9 @@ public class BasicProfileActivity extends AppCompatActivity implements View.OnCl
         BMR = findViewById(R.id.BMR_on_basic_profile_to_edit);
 
         username = findViewById(R.id.email_on_basic_profile_to_edit);
+
         intent = getIntent();
-
-        user = (User) intent.getSerializableExtra("user");
-
-        setValuesOnView();
+        USERNAME = (String) intent.getSerializableExtra("username");
 
         editName = findViewById(R.id.edit_name_button);
         editPassword = findViewById(R.id.edit_password_button);
@@ -43,6 +45,11 @@ public class BasicProfileActivity extends AppCompatActivity implements View.OnCl
         editName.setOnClickListener(this);
         editPassword.setOnClickListener(this);
         editUsername.setOnClickListener(this);
+
+        GetUserInfoModel getUserInfoModel = new GetUserInfoModel(USERNAME,this);
+        getUserInfoModel.getUserObject();
+
+
 
     }
 
@@ -78,5 +85,13 @@ public class BasicProfileActivity extends AppCompatActivity implements View.OnCl
             intent.putExtra("username",user.getUsername());
             startActivity(intent);
         }
+    }
+
+    public void onSuccessfulUserObject(User user) {
+
+        this.user = user;
+        setValuesOnView();
+
+
     }
 }

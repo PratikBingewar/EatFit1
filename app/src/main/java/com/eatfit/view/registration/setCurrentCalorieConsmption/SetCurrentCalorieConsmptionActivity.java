@@ -28,7 +28,10 @@ import com.eatfit.presenter.calculateIncrement.CalculateIncrement;
 import com.eatfit.presenter.calorieGoalCalculator.CalorieGoalCalculator;
 import com.eatfit.view.menu.MainMenuActivity;
 
-public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener , Serializable {
 
 
     Spinner breakfastIntensity, lunchIntensity, snackIntensity, dinnerIntensity;
@@ -119,70 +122,130 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
 
         //for english diet
         if(dietTypeForDinner.toLowerCase().equals("english") && dietIntensityForDinner.toLowerCase().equals("light")) {
-            dietDescForDinner = String.valueOf(R.string.light_english_dinner);
+
+            dietDescForDinner = "The light English Breakfast contains\n" +
+                    "        \\nOne fried egg,One link sausage,\\n\n" +
+                    "        One slice Canadian bacon,One large slice bread,One cup beans.\n" +
+                    "        \\nIt Contains 850 calories, 40.4 g total fat,\n" +
+                    "        \\n19.4 g carbohydrates and 43.4 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("english") && dietIntensityForDinner.toLowerCase().equals("medium")) {
-            dietDescForDinner = String.valueOf(R.string.medium_english_dinner);
+            dietDescForDinner = "The medium English Breakfast contains\n" +
+                    "        \\Two fried egg,Two link sausage,\\n\n" +
+                    "        Two slice Canadian bacon,Two large slice bread,One cup beans.\n" +
+                    "        \\nIt Contains 1000 calories, 60.4 g total fat,\n" +
+                    "        \\n30.4 g carbohydrates and 60.4 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("english") && dietIntensityForDinner.toLowerCase().equals("heavy")) {
-            dietDescForDinner = String.valueOf(R.string.heavy_english_dinner);
+            dietDescForDinner = "The heavy English Breakfast contains\n" +
+                    "        \\Three fried egg,Three link sausage,\\n\n" +
+                    "        Three slice Canadian bacon,Three large slice bread,One cup beans.\n" +
+                    "        \\nIt Contains 1200 calories, 40.4 g total fat,\n" +
+                    "        \\n43.4 g carbohydrates and 80.4 g of protein.";
         }
 
 
         //for south indian diet
         if(dietTypeForDinner.toLowerCase().equals("south indian") && dietIntensityForDinner.toLowerCase().equals("light")) {
-            dietDescForDinner = String.valueOf(R.string.light_south_indian_dinner);
+            dietDescForDinner = "The light south indian Breakfast contains\n" +
+                    "        \\n3 millet Idlis / 1 Dosa / 2 Medu Vada \\n\n" +
+                    "        1 small bowl sambar,and coconut chutney.\n" +
+                    "        \\nIt Contains 150 calories, 5 g total fat,\n" +
+                    "        \\n30 g carbohydrates and 15 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("south indian") && dietIntensityForDinner.toLowerCase().equals("medium")) {
-            dietDescForDinner = String.valueOf(R.string.medium_south_indian_dinner);
+            dietDescForDinner = "The medium south indian Breakfast contains\n" +
+                    "        \\n8 millet Idlis / 3 Dosa / 5 Medu Vada / 2 uthappa of any type\\n\n" +
+                    "        2 small bowl sambar,and coconut chutney.\n" +
+                    "        \\nIt Contains 300 calories, 10 g total fat,\n" +
+                    "        \\n60 g carbohydrates and 30 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("south indian") && dietIntensityForDinner.toLowerCase().equals("heavy")) {
-            dietDescForDinner = String.valueOf(R.string.heavy_south_indian_dinner);
+            dietDescForDinner = "The heavy south indian Breakfast contains\n" +
+                    "        \\n8 millet Idlis / 3 Dosa / 5 Medu Vada / 2 uthappa of any type\\n\n" +
+                    "        2 small bowl sambar,and coconut chutney.\n" +
+                    "        \\nIt Contains 475 calories, 17 g total fat,\n" +
+                    "        \\n90 g carbohydrates and 45 g of protein.";
         }
 
 
         //for north indian diet
         if(dietTypeForDinner.toLowerCase().equals("north indian") && dietIntensityForDinner.toLowerCase().equals("light")) {
-            dietDescForDinner = String.valueOf(R.string.light_north_indian_dinner);
+            dietDescForDinner = "The light North Indian Breakfast contains\n" +
+                    "        \\nOne Aloo paratha,One cup curd,\\n\n" +
+                    "        and 1 spoon butter.\n" +
+                    "        \\nIt Contains 350 calories, 30 g total fat,\n" +
+                    "        \\n40 g carbohydrates and 20 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("north indian") && dietIntensityForDinner.toLowerCase().equals("medium")) {
-            dietDescForDinner = String.valueOf(R.string.medium_north_indian_dinner);
+            dietDescForDinner = "The light North Indian Breakfast contains\n" +
+                    "        \\One Aloo paratha,one cup curd,\\n\n" +
+                    "        and one spoon butter and chai with buiscuits.\n" +
+                    "        \\nIt Contains 410 calories, 37 g total fat,\n" +
+                    "        \\n65 g carbohydrates and 26 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("north indian") && dietIntensityForDinner.toLowerCase().equals("heavy")) {
-            dietDescForDinner = String.valueOf(R.string.heavy_north_indian_dinner);
+            dietDescForDinner = "The light North Indian Breakfast contains\n" +
+                    "        \\Two Aloo paratha,one cup curd,\\n\n" +
+                    "        and one spoon butter and chai with buiscuits.\n" +
+                    "        \\nIt Contains 520 calories, 50 g total fat,\n" +
+                    "        \\n70 g carbohydrates and 42 g of protein.";
         }
 
         //for maharashtrian diet
         if(dietTypeForDinner.toLowerCase().equals("maharashtrian") && dietIntensityForDinner.toLowerCase().equals("light")) {
-            dietDescForDinner = String.valueOf(R.string.light_maharashtrian_dinner);
+            dietDescForDinner = "The light Maharashtrian Breakfast contains\n" +
+                    "       \\One plate poha or upma, sheera or Sabudana.\\n\n" +
+                    "        \\nIt Contains 250 calories, 20 g total fat,\n" +
+                    "        \\n30.4 g carbohydrates and 10.4 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("maharashtrian") && dietIntensityForDinner.toLowerCase().equals("medium")) {
-            dietDescForDinner = String.valueOf(R.string.medium_maharashtrian_dinner);
+            dietDescForDinner = "The medium Maharashtrian Breakfast contains\n" +
+                    "        \\Two plate poha or upma or sheera, Sabudana\\n\n" +
+                    "        or one ThaliPeeth and chatani or courd.\\n\n" +
+                    "        \\nIt Contains 550 calories, 45 g total fat,\n" +
+                    "        \\n59.4 g carbohydrates and 25.4 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("maharashtrian") && dietIntensityForDinner.toLowerCase().equals("heavy")) {
-            dietDescForDinner = String.valueOf(R.string.heavy_maharashtrian_dinner);
+            dietDescForDinner = "The heavy Maharashtrian Breakfast contains\n" +
+                    "       One plate poha or upma, sheera or Sabudana with\\n\n" +
+                    "        Two ThaliPeeth and chatani or courd.\\n\n" +
+                    "        \\nIt Contains 675 calories, 60 g total fat,\n" +
+                    "        \\n71.8 g carbohydrates and 35.9 g of protein.";
         }
 
 
         //for common diet
         if(dietTypeForDinner.toLowerCase().equals("common") && dietIntensityForDinner.toLowerCase().equals("light")) {
-            dietDescForDinner = String.valueOf(R.string.light_common_dinner);
+            dietDescForDinner = "The heavy Maharashtrian Breakfast contains\n" +
+                    "       One plate poha or upma, sheera or Sabudana with\\n\n" +
+                    "        Two ThaliPeeth and chatani or courd.\\n\n" +
+                    "        \\nIt Contains 675 calories, 60 g total fat,\n" +
+                    "        \\n71.8 g carbohydrates and 35.9 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("common") && dietIntensityForDinner.toLowerCase().equals("medium")) {
-            dietDescForDinner = String.valueOf(R.string.medium_common_dinner);
+            dietDescForDinner = "The heavy Maharashtrian Breakfast contains\n" +
+                    "       One plate poha or upma, sheera or Sabudana with\\n\n" +
+                    "        Two ThaliPeeth and chatani or courd.\\n\n" +
+                    "        \\nIt Contains 675 calories, 60 g total fat,\n" +
+                    "        \\n71.8 g carbohydrates and 35.9 g of protein.";
         }
 
         if(dietTypeForDinner.toLowerCase().equals("common") && dietIntensityForDinner.toLowerCase().equals("heavy")) {
-            dietDescForDinner = String.valueOf(R.string.heavy_common_dinner);
+            dietDescForDinner = "The heavy Maharashtrian Breakfast contains\n" +
+                    "       One plate poha or upma, sheera or Sabudana with\\n\n" +
+                    "        Two ThaliPeeth and chatani or courd.\\n\n" +
+                    "        \\nIt Contains 675 calories, 60 g total fat,\n" +
+                    "        \\n71.8 g carbohydrates and 35.9 g of protein.";
         }
     }
 
@@ -363,11 +426,6 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
         ArrayAdapter<CharSequence> dietTypeArrayAdapter = ArrayAdapter.createFromResource(this, R.array.current_diet_types, android.R.layout.simple_spinner_item);
         dietLevelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        breakfastDiet.setPrompt("What's the type?");
-        snackDiet.setPrompt("What's the type?");
-        lunchDiet.setPrompt("What's the type?");
-        dinnerDiet.setPrompt("What's the type?");
-
         breakfastDiet.setAdapter(dietTypeArrayAdapter);
         lunchDiet.setAdapter(dietTypeArrayAdapter);
         snackDiet.setAdapter(dietTypeArrayAdapter);
@@ -536,9 +594,11 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
     }
 
     public  void onSuccessfulRegistration(){
+
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
         intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
         intent.putExtra("user",user.getUsername());
+        intent.putExtra("progress",0);
         startActivity(intent);
         finish();
     }

@@ -19,16 +19,18 @@ import java.util.Map;
 
 public class AddFoodModel {
     String username,foodName;
-    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/AddFood.php";
+    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/appendFoodList.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
     AddFoodActivity addFoodActivity;
+    double totalCalVal;
 
-    public AddFoodModel(String username, String foodName, AddFoodActivity addFoodActivity) {
+    public AddFoodModel(String username, String foodName, double totalCalVal, AddFoodActivity addFoodActivity) {
 
         this.username = username;
         this.foodName = foodName;
+        this.totalCalVal = totalCalVal;
         this.addFoodActivity = addFoodActivity;
         requestQueue = Volley.newRequestQueue((Context) addFoodActivity);
     }
@@ -54,6 +56,7 @@ public class AddFoodModel {
                 Map<String, String> param = new HashMap<String,String>();
                 param.put("username",username);
                 param.put("foodname",foodName);
+                param.put("calorie_consumption",String.valueOf(totalCalVal));
                 return param;
             }
         };

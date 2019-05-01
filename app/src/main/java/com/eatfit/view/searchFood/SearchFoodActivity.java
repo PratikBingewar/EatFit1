@@ -3,7 +3,6 @@ package com.eatfit.view.searchFood;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,14 +13,12 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.eatfit.R;
-import com.eatfit.presenter.User;
 import com.eatfit.presenter.holder.FoodHolder;
 import com.eatfit.view.addFood.AddFoodActivity;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,7 +33,7 @@ public class SearchFoodActivity extends AppCompatActivity implements SearchView.
     InputStream inputStream;
     String[] ids;
     FoodHolder selectedFood;
-    User user;
+    String username;
     Intent intent;
 
     @Override
@@ -50,7 +47,8 @@ public class SearchFoodActivity extends AppCompatActivity implements SearchView.
         setList();
 
         intent = getIntent();
-        user = (User) intent.getSerializableExtra("user");
+        username = (String) intent.getSerializableExtra("username");
+        Log.d("search food username: ",username);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNames);
         listView.setAdapter(adapter);
@@ -156,9 +154,7 @@ public class SearchFoodActivity extends AppCompatActivity implements SearchView.
         intent.putExtra("carbs",selectedFood.getCarbs());
         intent.putExtra("fats",selectedFood.getFat());
         intent.putExtra("proteins",selectedFood.getProtein());
-        intent.putExtra("unit_cal",selectedFood.getUnitCal());
-        intent.putExtra("unit",selectedFood.getServingUnit());
-        intent.putExtra("user",user);
+        intent.putExtra("username",username);
         String[] splited = selectedFood.getServingUnit().split("\\s+");
 
         String split_one=splited[0];

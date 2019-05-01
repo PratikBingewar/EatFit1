@@ -106,9 +106,6 @@ public class RegistrationModel implements IRegisterModel {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
-                JSONObject jsonObject=new JSONObject();
-
-
 
                 param.put("name",name);
                 param.put("gender",gender);

@@ -24,15 +24,16 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="338dp"
-        android:layout_height="73dp"
+        android:layout_width="297dp"
+        android:layout_height="67dp"
         android:layout_alignTop="@+id/text_progress_bar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="31dp"
+        android:layout_marginStart="54dp"
         android:layout_marginTop="66dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="30dp"
+        android:layout_toStartOf="@+id/progress_in_percentage" />
 
     <Button
         android:id="@+id/btn_show_details"
@@ -65,18 +66,18 @@
         android:layout_marginTop="18dp" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/progress_in_percentage"
         android:layout_width="32dp"
         android:layout_height="33dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="91dp"
-        android:layout_marginEnd="6dp"
-        android:text="0%"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="26dp"
+        android:text="0"
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/total_gram_of_calories"
+        android:id="@+id/total_calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

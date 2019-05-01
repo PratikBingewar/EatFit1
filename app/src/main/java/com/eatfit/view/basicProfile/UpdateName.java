@@ -30,6 +30,7 @@ public class UpdateName extends AppCompatActivity {
 
         intent = getIntent();
         username = (String) intent.getSerializableExtra("username");
+
         Log.d("username: ",username);
 
         newText = findViewById(R.id.newNameText);
@@ -64,21 +65,21 @@ public class UpdateName extends AppCompatActivity {
         Toast.makeText(UpdateName.this,"name updated",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(UpdateName.this, MainMenuActivity.class);
         user.setName(name);
-        intent.putExtra("user",user);
+        intent.putExtra("username",username);
         startActivity(intent);
     }
 
     public void onunSuccessfulUpdate(){
         Toast.makeText(UpdateName.this,"please try again later !!",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(UpdateName.this, MainMenuActivity.class);
-        intent.putExtra("user",user);
+        intent.putExtra("username",username);
         startActivity(intent);
     }
 
     public void onError(String error){
         Toast.makeText(UpdateName.this,"error: "+error,Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(UpdateName.this, MainMenuActivity.class);
-        intent.putExtra("user",user);
+        intent.putExtra("username",username);
         startActivity(intent);
     }
 }

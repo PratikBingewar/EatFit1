@@ -1,58 +1,44 @@
 package com.eatfit.view.menu;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.eatfit.R;
+import com.eatfit.model.getUserData.GetUserDataModel;
 import com.eatfit.model.getUserInfo.GetUserInfoModel;
 import com.eatfit.presenter.User;
-import com.eatfit.view.addFood.AddFoodActivity;
 import com.eatfit.view.basicProfile.BasicProfileActivity;
 import com.eatfit.view.changeFitnessGoal.ChangeFitnessGoalActivity;
 import com.eatfit.view.changeWeight.ChangeWeightActivity;
+import com.eatfit.view.connetionLost.LostConnectionActivity;
 import com.eatfit.view.details.DetailsActivity;
 import com.eatfit.view.login.LoginActivity;
 import com.eatfit.view.reminder.SetReminderActivity;
 import com.eatfit.view.searchFood.SearchFoodActivity;
 import com.eatfit.view.suggestFood.FoodSuggestionActivity;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainMenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener {
 
-    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/getUsreInfo.php";
-    StringRequest stringRequest;
-    RequestQueue requestQueue;
-    boolean CONNECTION_STATUS;
 
     Intent intent;
     TextView nameOnMainMenu,emailOnMainMenu;
@@ -61,40 +47,29 @@ public class MainMenuActivity extends AppCompatActivity
     ArrayList<String> list;
     ArrayAdapter<String > adapter;
     String username;
+    User user;
+    Integer progress;
+    ProgressBar progressBar;
+    TextView progressInPercentage;
+    Double userCalorieGoal,Increment;
+    int percentage;
+    TextView totalCalories;
+    FloatingActionButton fab;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-
-        listView = findViewById(R.id.listView);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(adapter);
-
-        nameOnMainMenu = findViewById(R.id.name_on_main_menu);
-        emailOnMainMenu = findViewById(R.id.username_on_main_menu);
-
-
         intent = getIntent();
-        username = (String) intent.getSerializableExtra("user");
-        Log.d("main menu username: ",username);
-
-
-        getUserInfo();
-
+        username = (String) intent.getSerializableExtra("username");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, SearchFoodActivity.class);
-                intent.putExtra("username",username);
-                startActivity(intent);
-            }
-        });
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(this);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -106,121 +81,179 @@ public class MainMenuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        GetUserDataModel getUserDataModel = new GetUserDataModel(username,this);
+        getUserDataModel.getUerInfo();
+
     }
 
-    private void getUserInfo() {
-        requestQueue = Volley.newRequestQueue( this);
-        getContent();
+    private void setProgressOgBar(Integer progress) {
+
+        userCalorieGoal = user.calorieGoal;
+
+        percentage = (int) ((progress/userCalorieGoal)*100);
+        progressBar.setProgress(percentage);
+        progressInPercentage.setText(percentage+" %");
+        setColors();
+        totalCalories.setText(progress+" out of "+userCalorieGoal+" Cal");
     }
 
-    private void getContent() {
-        Log.d("pratik","in authenticate");
-        stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        checkResponse(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
-                        changeConnectionStatus(false);
-                    }
-                }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> param = new HashMap<String,String>();
-                param.put("username",username);
-                return param;
-            }
-        };
-        requestQueue.add(stringRequest);
-    }
-
-    public void changeConnectionStatus(boolean val) {
-        CONNECTION_STATUS = val;
-    }
-
-    public void checkResponse(String response){
-        try {
-            JSONObject obj = new JSONObject(response);
-
-            String id = obj.getString("user_id");
-            Log.d("user id: ", id);
-
-            String password = obj.getString("password");
-            Log.d("user password: ", password);
-
-            String gender = obj.getString("gender");
-            Log.d("user gender: ", gender);
-
-            String age = obj.getString("age");
-            Log.d("user age: ", age);
-
-            String weight = obj.getString("weight");
-            Log.d("user weight: ", weight);
-
-            String height = obj.getString("height");
-            Log.d("user height: ", height);
-
-            String BMI = obj.getString("BMI");
-            Log.d("user BMI: ", BMI);
-
-            String BMR = obj.getString("BMR");
-            Log.d("user BMR: ", BMR);
-
-            String calorie_goal = obj.getString("calorie_goal");
-            Log.d("user calorie_goal: ", calorie_goal);
-
-            String increment = obj.getString("increment");
-            Log.d("user increment: ", increment);
-
-            String breakfast_intake = obj.getString("breakfast_intake");
-            Log.d("user breakfast_intake: ", breakfast_intake);
-
-            String lunch_intake = obj.getString("lunch_intake");
-            Log.d("user lunch_intake: ", lunch_intake);
-
-            String snack_intake = obj.getString("snack_intake");
-            Log.d("user snack_intake: ", snack_intake);
-
-            String dinner_intake = obj.getString("dinner_intake");
-            Log.d("user dinner_intake: ", dinner_intake);
-
-            String time_to_reach_goal = obj.getString("time_to_reach_goal");
-            Log.d("user time", time_to_reach_goal);
-
-            String intensity_id = obj.getString("intensity_id");
-            Log.d("user intensity_id: ", intensity_id);
-
-            String fitness_goal_id = obj.getString("fitness_goal_id");
-            Log.d("user fitness_goal_id: ", fitness_goal_id);
-
-            String activity_id = obj.getString("activity_id");
-            Log.d("user activity_id: ", activity_id);
-
-
-        } catch (Exception ex) {
-            Log.d("Pratik : ","In exception "+ex);
-            changeConnectionStatus(false);
+    private void setColors() {
+        if(progressBar.getProgress() > 100) {
+            Toast.makeText(MainMenuActivity.this, "You are eating too much !!!" , Toast.LENGTH_SHORT).show();
+        }
+        if(progressBar.getProgress() < 33) {
+            int redColorValue = Color.YELLOW;
+            progressBar.setBackgroundColor(redColorValue);
+        }
+        if(progressBar.getProgress() < 66 && progressBar.getProgress() > 33 ) {
+            int redColorValue = Color.GREEN;
+            progressBar.setBackgroundColor(redColorValue);
+        }
+        if(progressBar.getProgress() > 66) {
+            int redColorValue = Color.RED;
+            progressBar.setBackgroundColor(redColorValue);
         }
     }
 
-    private void getList() {
-        list = new ArrayList<>();
-        list.add("apple");
-        list.add("banana");
-        list.add("pineapple");
-        list.add("orange");
-        list.add("lychee");
-        list.add("gavava");
-        list.add("peech");
-        list.add("melon");
-        list.add("watermelon");
-        list.add("papaya");
+
+    public void onfailedInternetConnection() {
+        Intent intent = new Intent(MainMenuActivity.this, LostConnectionActivity.class);
+        startActivity(intent);
+        finish();
+
     }
+
+    public void setUserInfo(String[] token, double calorie_consumption) {
+        list = new ArrayList<>(500);
+        Log.d("length ", token.length+"");
+        for (int i = token.length-1 ;i >= 0;i--){
+            list.add(token[i]);
+        }
+        progress = (int) calorie_consumption;
+        Log.d("progress ", progress+"");
+
+        GetUserInfoModel getUserInfoModel = new GetUserInfoModel(username,this);
+        getUserInfoModel.getUserObject();
+
+
+
+    }
+
+//        stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        checkResponse(response);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Log.d("Pratik","In volley error");
+//                        changeConnectionStatus(false);
+//                    }
+//                }){
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> param = new HashMap<String,String>();
+//                param.put("username",username);
+//                return param;
+//            }
+//        };
+//        requestQueue.add(stringRequest);
+//    }
+//
+//    public void changeConnectionStatus(boolean val) {
+//        CONNECTION_STATUS = val;
+//    }
+//
+//    public void checkResponse(String response){
+//        try {
+//            JSONObject obj = new JSONObject(response);
+//
+//            String id = obj.getString("user_id");
+//            user.setID(Integer.valueOf(id));
+//            Log.d("user id: ", id);
+//
+//            user.setUsername(username);
+//            Log.d("user password: ", username);
+//
+//            String password = obj.getString("password");
+//            user.setPassword(password);
+//            Log.d("user password: ", password);
+//
+//            String gender = obj.getString("gender");
+//            user.setGender(gender);
+//            Log.d("user gender: ", gender);
+//
+//            String age = obj.getString("age");
+//            user.setAge(Double.valueOf(age));
+//            Log.d("user age: ", age);
+//
+//            String weight = obj.getString("weight");
+//            user.setWeight(Double.valueOf(weight));
+//            Log.d("user weight: ", weight);
+//
+//            String height = obj.getString("height");
+//            user.setHeight(Double.valueOf(height));
+//            Log.d("user height: ", height);
+//
+//            String BMI = obj.getString("BMI");
+//            user.setBMI(Double.valueOf(BMI));
+//            Log.d("user BMI: ", BMI);
+//
+//            String BMR = obj.getString("BMR");
+//            user.setBMR(Double.valueOf(BMR));
+//            Log.d("user BMR: ", BMR);
+//
+//            String calorie_goal = obj.getString("calorie_goal");
+//            user.setCalorieGoal(Double.valueOf(calorie_goal));
+//            Log.d("user calorie_goal: ", calorie_goal);
+//            userCalorieGoal = user.getCalorieGoal();
+//
+//            String increment = obj.getString("increment");
+//            user.setAge(Double.valueOf(age));
+//            Log.d("user increment: ", increment);
+//            Increment = user.getIncrementInCalorieGoal();
+//
+//            String breakfast_intake = obj.getString("breakfast_intake");
+//            user.setBreakfastIntake(Double.valueOf(breakfast_intake));
+//            Log.d("user breakfast_intake: ", breakfast_intake);
+//
+//            String lunch_intake = obj.getString("lunch_intake");
+//            user.setLunchIntake(Double.valueOf(lunch_intake));
+//            Log.d("user lunch_intake: ", lunch_intake);
+//
+//            String snack_intake = obj.getString("snack_intake");
+//            user.setSnackIntake(Double.valueOf(snack_intake));
+//            Log.d("user snack_intake: ", snack_intake);
+//
+//            String dinner_intake = obj.getString("dinner_intake");
+//            user.setDinnerIntake(Double.valueOf(dinner_intake));
+//            Log.d("user dinner_intake: ", dinner_intake);
+//
+//            String time_to_reach_goal = obj.getString("time_to_reach_goal");
+//            user.setTimeToReachGoal(Double.valueOf(time_to_reach_goal));
+//            Log.d("user time", time_to_reach_goal);
+//
+//            String intensity_id = obj.getString("intensity_id");
+//            user.setIntensityID(Integer.valueOf(intensity_id));
+//            Log.d("user intensity_id: ", intensity_id);
+//
+//            String fitness_goal_id = obj.getString("fitness_goal_id");
+//            user.setFitnessGoalID(Integer.valueOf(fitness_goal_id));
+//            Log.d("user fitness_goal_id: ", fitness_goal_id);
+//
+//            String activity_id = obj.getString("activity_id");
+//            user.setActivityID(Integer.valueOf(activity_id));
+//            Log.d("user activity_id: ", activity_id);
+//
+//
+//        } catch (Exception ex) {
+//            Log.d("Pratik : ","In exception "+ex);
+//            changeConnectionStatus(false);
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
@@ -304,7 +337,64 @@ public class MainMenuActivity extends AppCompatActivity
         return true;
     }
 
-    public void onWelComeToast() {
+
+    public void onWelComeToast(User user) {
+        this.user = user;
+        Log.d("RESPONSE ",name+" "+user.gender+" "+user.age+" "+user.height+" "+user.weight+" "+
+                user.BMI+" "+user.BMR+
+                " "+user.calorieGoal+" "+user.incrementInCalorieGoal+" "+user.breakfastIntake+" "+
+                user.lunchIntake+" "+user.snackIntake+
+                " "+user.dinnerIntake+
+                " "+user.timeToReachGoal+" "+user.intensityID+" "+user.fitnessGoalID+" "+user.activityID);
+
         Toast.makeText(MainMenuActivity.this,"!! Welcome to EatFit !!", Toast.LENGTH_SHORT).show();
+
+        Log.d("main menu username: ",username);
+
+
+        listView = findViewById(R.id.listView);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
+        listView.setAdapter(adapter);
+
+        totalCalories = findViewById(R.id.total_calories);
+        nameOnMainMenu = findViewById(R.id.name_on_main_menu);
+        emailOnMainMenu = findViewById(R.id.username_on_main_menu);
+        progressBar = findViewById(R.id.progressBar);
+
+//        progressBar.setMin(0);
+//        progressBar.setMax(100);
+
+        progressInPercentage = findViewById(R.id.progress_in_percentage);
+
+        progress = (Integer) intent.getSerializableExtra("progress");
+
+        if(progress == null) {
+            Log.d("null progress","null");
+            progress = 0;
+        }
+
+
+
+        setProgressOgBar(progress);
+
+
+
+    }
+
+
+
+    public void printAllStrings(String[] token) {
+        for (int i=0;i<token.length;i++){
+            Toast.makeText(MainMenuActivity.this,(i+1)+" "+token[i],Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == fab) {
+            Intent intent = new Intent(MainMenuActivity.this, SearchFoodActivity.class);
+            intent.putExtra("username",username);
+            startActivity(intent);
+        }
     }
 }
