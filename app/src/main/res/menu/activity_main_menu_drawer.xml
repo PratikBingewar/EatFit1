@@ -32,7 +32,12 @@
         <item
             android:id="@+id/change_current_weight_on_main_menu_drawer"
             android:icon="@drawable/ic_add_black_48dp_00"
-            android:title="Change Weight" />
+            android:title="Change Current Weight" />
+
+        <item
+            android:id="@+id/change_weight_goal_on_main_menu_drawer"
+            android:icon="@drawable/ic_add_black_48dp_00"
+            android:title="Change Weight Goal" />
 
         <item
             android:id="@+id/change_current_fitness_goal_on_main_menu_drawer"

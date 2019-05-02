@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import com.eatfit.R;
 import com.eatfit.model.getUserData.GetUserDataModel;
-import com.eatfit.model.login.ILoginModel;
-import com.eatfit.model.login.LoginModel;
 import com.eatfit.presenter.User;
 import com.eatfit.presenter.login.ILoginPresenter;
 import com.eatfit.presenter.login.LoginRepresenter;
@@ -85,8 +83,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         Log.d("username ",user.getUsername());
         Log.d("password ",user.getPassword());
 
-        GetUserDataModel getUserDataModel = new GetUserDataModel(username,this);
-        getUserDataModel.getUerInfo();
+        onSuccessfulInfo();
 
     }
 
@@ -135,5 +132,11 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
 
     public void setUserInfo(String[] token, double calorie_consumption) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

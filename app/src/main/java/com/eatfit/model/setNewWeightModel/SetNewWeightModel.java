@@ -1,4 +1,4 @@
-package com.eatfit.model.addFood;
+package com.eatfit.model.setNewWeightModel;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,29 +10,31 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eatfit.view.addFood.AddFoodActivity;
+import com.eatfit.presenter.login.ILoginPresenter;
+import com.eatfit.presenter.login.LoginRepresenter;
+import com.eatfit.view.changeWeight.ChangeWeightActivity;
+import com.eatfit.view.login.ILoginView;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddFoodModel {
-    String username,foodName;
-    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/appendFoodList.php";
+public class SetNewWeightModel {
+
+    String username;
+    Double weight;
+    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/update_new_weight.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
-    AddFoodActivity addFoodActivity;
-    double totalCalVal;
+    ChangeWeightActivity changeWeightActivity;
 
-    public AddFoodModel(String username, String foodName, double totalCalVal, AddFoodActivity addFoodActivity) {
-
+    public SetNewWeightModel(String username, double weight, ChangeWeightActivity changeWeightActivity) {
         this.username = username;
-        this.foodName = foodName;
-        this.totalCalVal = totalCalVal;
-        this.addFoodActivity = addFoodActivity;
-        requestQueue = Volley.newRequestQueue((Context) addFoodActivity);
+        this.weight = weight;
+        this.changeWeightActivity = changeWeightActivity;
+        requestQueue = Volley.newRequestQueue((Context) changeWeightActivity);
     }
 
     public  void  authenticate() {
@@ -55,8 +57,7 @@ public class AddFoodModel {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
                 param.put("username",username);
-                param.put("food_name",foodName);
-                param.put("calorie_consumption",String.valueOf(totalCalVal));
+                param.put("weight",String.valueOf(weight));
                 return param;
             }
         };
@@ -75,14 +76,14 @@ public class AddFoodModel {
             if (res.equals("Y")) {
                 Log.d("Pratik","In yes of Model error");
                 changeConnectionStatus(true);
-                addFoodActivity.onSuccessfulAddition();
+                changeWeightActivity.onSuccessfulUpdate();
             } else if (res.equals("N")) {
                 Log.d("Pratik","In No of Model error");
                 changeConnectionStatus(false);
-                addFoodActivity.onFailedAddition();
+                changeWeightActivity.onFailedToFetchCurentWeight();
             }
         } catch (Exception ex) {
-            Log.d("Pratik","In exception "+ex);
+            Log.d("Pratik","In exception ");
             changeConnectionStatus(false);
         }
     }

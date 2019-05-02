@@ -108,25 +108,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:clickable="true"
                 android:paddingBottom="@dimen/slide_title"
                 android:text="BMI:"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password_on_basic_profile_editabletextView11" />
-
-            <TextView
-                android:id="@+id/password_on_basic_profile_editabletextView11"
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
-
-                android:clickable="true"
-                android:paddingBottom="@dimen/slide_title"
-                android:text="Password"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/username_on_basic_profile_editable" />
@@ -177,11 +162,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:clickable="true"
                 android:paddingBottom="@dimen/slide_title"
                 android:text="20"
                 app:layout_constraintStart_toEndOf="@+id/BMI_on_basic_profile_editable"
-                app:layout_constraintTop_toBottomOf="@+id/password_on_basic_profile_editabletextView11" />
+                app:layout_constraintTop_toBottomOf="@+id/email_on_basic_profile_to_edit" />
 
 
             <TextView
@@ -235,49 +221,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_on_basic_profile_editable"
                 app:layout_constraintLeft_toRightOf="@+id/age_on_basic_profile_editable"
                 android:layout_marginLeft="8dp" />
-
-            <Button
-                android:id="@+id/edit_name_button"
-                android:layout_width="85dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="172dp"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@android:color/transparent"
-                android:text="edit"
-                android:textColor="@android:color/holo_blue_dark"
-                app:layout_constraintStart_toEndOf="@+id/name_on_basic_profile_to_edit"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-
-                android:id="@+id/edit_username_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="116dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@android:color/transparent"
-                android:text="edit"
-                android:textColor="@android:color/holo_blue_dark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.925"
-                app:layout_constraintStart_toEndOf="@+id/email_on_basic_profile_to_edit"
-                app:layout_constraintTop_toBottomOf="@+id/edit_name_button" />
-
-            <Button
-                android:id="@+id/edit_password_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@android:color/transparent"
-                android:text="edit"
-                android:textColor="@android:color/holo_blue_dark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.957"
-                app:layout_constraintStart_toEndOf="@+id/password_on_basic_profile_editabletextView11"
-                app:layout_constraintTop_toBottomOf="@+id/edit_username_button" />
 
         </android.support.constraint.ConstraintLayout>
     </RelativeLayout>

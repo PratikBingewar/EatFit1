@@ -27,6 +27,7 @@ import com.eatfit.presenter.User;
 import com.eatfit.view.basicProfile.BasicProfileActivity;
 import com.eatfit.view.changeFitnessGoal.ChangeFitnessGoalActivity;
 import com.eatfit.view.changeWeight.ChangeWeightActivity;
+import com.eatfit.view.changeWeightGoal.ChangeWeightGoalActivity;
 import com.eatfit.view.details.DetailsActivity;
 import com.eatfit.view.login.LoginActivity;
 import com.eatfit.view.reminder.SetReminderActivity;
@@ -83,17 +84,8 @@ public class MainMenuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(! isNewUser.equals("true")) {
-            String URL = "https://eatfit223.000webhostapp.com/volley/getUserFoodData.php";
-            GetUserDataModel getUserDataModel = new GetUserDataModel(username,URL,this);
-            getUserDataModel.getUerInfo();
-        }
-        else {
-            String URL = "https://eatfit223.000webhostapp.com/volley/addUserInFoodTable.php";
-            GetUserDataModel getUserDataModel = new GetUserDataModel(username,URL,this);
-            getUserDataModel.getUerInfo();
-        }
-
+        GetUserDataModel getUserDataModel = new GetUserDataModel(username,this);
+        getUserDataModel.getUerInfo();
 
         Toast.makeText(MainMenuActivity.this,"Got all foods !!! ", Toast.LENGTH_SHORT);
 
@@ -106,26 +98,7 @@ public class MainMenuActivity extends AppCompatActivity
         percentage = (int) ((progress/userCalorieGoal)*100);
         progressBar.setProgress(percentage);
         progressInPercentage.setText(percentage+" %");
-        setColors();
         totalCalories.setText(progress+" out of "+userCalorieGoal+" Cal");
-    }
-
-    private void setColors() {
-        int colorValue = Color.YELLOW;
-        if(progressBar.getProgress() > 100) {
-            Toast.makeText(MainMenuActivity.this, "You are eating too much !!!" , Toast.LENGTH_SHORT).show();
-        }
-        if(progressBar.getProgress() < 33) {
-            colorValue = Color.YELLOW;
-        }
-        if(progressBar.getProgress() < 66 && progressBar.getProgress() > 33 ) {
-            colorValue = Color.GREEN;
-        }
-        if(progressBar.getProgress() > 66) {
-            colorValue = Color.RED;
-        }
-        progressBar.setBackgroundColor(colorValue);
-
     }
 
 
@@ -139,21 +112,21 @@ public class MainMenuActivity extends AppCompatActivity
 
         if(calorie_consumption != 0) {
             Log.d("length ", token.length + "");
-            for (int i = token.length - 1; i >= 0; i--) {
+            for (int i = 0; i < token.length ; i++) {
                 list.add(token[i]);
                 Log.d("food name in main menu:" + i, token[i]);
             }
         }
-            progress = (int) calorie_consumption;
-            Log.d("progress ", progress+"");
+        progress = (int) calorie_consumption;
+        Log.d("progress ", progress+"");
 
-            GetUserInfoModel getUserInfoModel = new GetUserInfoModel(username,this);
-            getUserInfoModel.getUserObject();
+        GetUserInfoModel getUserInfoModel = new GetUserInfoModel(username,this);
+        getUserInfoModel.getUserObject();
 
 
-            Toast.makeText(MainMenuActivity.this,"Got user info !!! ", Toast.LENGTH_SHORT);
-            fab.setEnabled(true);
-            Log.d("fab enabled: ","now add");
+        Toast.makeText(MainMenuActivity.this,"Got user info !!! ", Toast.LENGTH_SHORT);
+        fab.setEnabled(true);
+        Log.d("fab enabled: ","now add");
     }
 
     @Override
@@ -224,6 +197,10 @@ public class MainMenuActivity extends AppCompatActivity
             Intent intent = new Intent(MainMenuActivity.this, ChangeWeightActivity.class);
             intent.putExtra("username",username);
             startActivity(intent);
+        } else if (id == R.id.change_weight_goal_on_main_menu_drawer) {
+            Intent intent = new Intent(MainMenuActivity.this, ChangeWeightGoalActivity.class);
+            intent.putExtra("username",username);
+            startActivity(intent);
         } else if (id == R.id.change_current_fitness_goal_on_main_menu_drawer) {
             Intent intent = new Intent(MainMenuActivity.this, ChangeFitnessGoalActivity.class);
             intent.putExtra("username",username);
@@ -269,15 +246,12 @@ public class MainMenuActivity extends AppCompatActivity
         }
 
         setProgressOgBar(progress);
-
-
-
     }
 
 
 
     public void printAllStrings(String[] token) {
-        for (int i=0;i<token.length;i++){
+        for (int i=0 ; i<token.length ; i++){
             Toast.makeText(MainMenuActivity.this,(i+1)+" "+token[i],Toast.LENGTH_SHORT).show();
         }
     }

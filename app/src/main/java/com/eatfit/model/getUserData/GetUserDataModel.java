@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GetUserDataModel {
-    public String  LOGIN_URL = "";
+    public String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/getUserFoodData.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
@@ -27,9 +27,8 @@ public class GetUserDataModel {
     String userNAME;
     MainMenuActivity mainMenuActivity;
 
-    public GetUserDataModel(String userNAME, String LOGIN_URL, MainMenuActivity mainMenuActivity) {
+    public GetUserDataModel(String userNAME, MainMenuActivity mainMenuActivity) {
         this.userNAME = userNAME;
-        this.LOGIN_URL = LOGIN_URL;
         this.mainMenuActivity = mainMenuActivity;
         requestQueue = Volley.newRequestQueue((Context) mainMenuActivity);
     }
@@ -84,25 +83,16 @@ public class GetUserDataModel {
             Log.d("calorie_consumption:  ", String.valueOf(root.getDouble("calorie_consumption")));
 
             String food_names = root.getString("food_name");
-            String[] token={""};
-            if(calorie_consumption != 0) {
-                Log.d("food name in model:  ",root.getString("food_name"));
-                token = food_names.split("_");
-            }
+            Log.d("food name in model:  ",root.getString("food_name"));
+            String[] token = food_names.split("_");
 
             Log.d("string length: ",""+token.length);
             Log.d("broken string : ",""+token.toString());
 
 
-            if(this.loginActivity != null) {
-                loginActivity.printAllStrings(token);
-                loginActivity.setUserInfo(token,calorie_consumption);
-                loginActivity.onSuccessfulInfo();
-            }
-            else if(this.mainMenuActivity != null) {
-                mainMenuActivity.printAllStrings(token);
-                mainMenuActivity.setUserInfo(token,calorie_consumption);
-            }
+            mainMenuActivity.printAllStrings(token);
+            mainMenuActivity.setUserInfo(token,calorie_consumption);
+
 //            String name=obj.getString("name");
 //            user.setName(name);
 //            double age=obj.getDouble("age");

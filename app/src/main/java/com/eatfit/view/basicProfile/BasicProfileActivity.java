@@ -1,21 +1,17 @@
 package com.eatfit.view.basicProfile;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.eatfit.R;
 import com.eatfit.model.getUserInfo.GetUserInfoModel;
 import com.eatfit.presenter.User;
 
-public class BasicProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class BasicProfileActivity extends AppCompatActivity {
 
     Intent intent;
-    Button editName, editPassword, editUsername;
     User user;
     TextView age,name,gender,emailOnTop,nameOnTop,BMI,BMR,username;
     String USERNAME;
@@ -38,14 +34,6 @@ public class BasicProfileActivity extends AppCompatActivity implements View.OnCl
         intent = getIntent();
         USERNAME = (String) intent.getSerializableExtra("username");
 
-        editName = findViewById(R.id.edit_name_button);
-        editPassword = findViewById(R.id.edit_password_button);
-        editUsername = findViewById(R.id.edit_username_button);
-
-        editName.setOnClickListener(this);
-        editPassword.setOnClickListener(this);
-        editUsername.setOnClickListener(this);
-
         GetUserInfoModel getUserInfoModel = new GetUserInfoModel(USERNAME,this);
         getUserInfoModel.getUserObject();
 
@@ -58,8 +46,8 @@ public class BasicProfileActivity extends AppCompatActivity implements View.OnCl
         name.setText(user.getName());
         nameOnTop.setText(user.getName());
 
-        emailOnTop.setText(user.getUsername());
-        username.setText(user.getUsername());
+        emailOnTop.setText(USERNAME);
+        username.setText(USERNAME);
 
         age.setText(Double.toString(user.getAge()));
         gender.setText(user.getGender());
@@ -68,24 +56,6 @@ public class BasicProfileActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    @Override
-    public void onClick(View view) {
-        if(view == editName) {
-            Intent intent = new Intent(BasicProfileActivity.this,UpdateName.class);
-            intent.putExtra("username",user.getUsername());
-            startActivity(intent);
-        }
-        else if(view == editPassword) {
-            Intent intent = new Intent(BasicProfileActivity.this,UpdatePassword.class);
-            intent.putExtra("username",user.getUsername());
-            startActivity(intent);
-        }
-        else if(view == editUsername) {
-            Intent intent = new Intent(BasicProfileActivity.this,UpdateUserName.class);
-            intent.putExtra("username",user.getUsername());
-            startActivity(intent);
-        }
-    }
 
     public void onSuccessfulUserObject(User user) {
 

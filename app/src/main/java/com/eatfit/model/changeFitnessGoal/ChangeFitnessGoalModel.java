@@ -1,4 +1,4 @@
-package com.eatfit.model.addFood;
+package com.eatfit.model.changeFitnessGoal;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,29 +10,28 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eatfit.view.addFood.AddFoodActivity;
+import com.eatfit.view.changeFitnessGoal.ChangeFitnessGoalActivity;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddFoodModel {
-    String username,foodName;
-    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/appendFoodList.php";
+public class ChangeFitnessGoalModel {
+
+    String username;
+    int goalID;
+    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/update_new_fitness_goal.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
-    AddFoodActivity addFoodActivity;
-    double totalCalVal;
+    ChangeFitnessGoalActivity changeFitnessGoalActivity;
 
-    public AddFoodModel(String username, String foodName, double totalCalVal, AddFoodActivity addFoodActivity) {
-
+    public ChangeFitnessGoalModel(String username, int goalID, ChangeFitnessGoalActivity changeFitnessGoalActivity) {
         this.username = username;
-        this.foodName = foodName;
-        this.totalCalVal = totalCalVal;
-        this.addFoodActivity = addFoodActivity;
-        requestQueue = Volley.newRequestQueue((Context) addFoodActivity);
+        this.goalID = goalID;
+        this.changeFitnessGoalActivity = changeFitnessGoalActivity;
+        requestQueue = Volley.newRequestQueue((Context) changeFitnessGoalActivity);
     }
 
     public  void  authenticate() {
@@ -55,8 +54,7 @@ public class AddFoodModel {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
                 param.put("username",username);
-                param.put("food_name",foodName);
-                param.put("calorie_consumption",String.valueOf(totalCalVal));
+                param.put("fitness_goal_id",String.valueOf(goalID));
                 return param;
             }
         };
@@ -75,15 +73,16 @@ public class AddFoodModel {
             if (res.equals("Y")) {
                 Log.d("Pratik","In yes of Model error");
                 changeConnectionStatus(true);
-                addFoodActivity.onSuccessfulAddition();
+                changeFitnessGoalActivity.onSuccessfulUpdate();
             } else if (res.equals("N")) {
                 Log.d("Pratik","In No of Model error");
                 changeConnectionStatus(false);
-                addFoodActivity.onFailedAddition();
+                changeFitnessGoalActivity.onFailedUpdate();
             }
         } catch (Exception ex) {
-            Log.d("Pratik","In exception "+ex);
+            Log.d("Pratik","In exception ");
             changeConnectionStatus(false);
+            changeFitnessGoalActivity.onFailedUpdate();
         }
     }
 }

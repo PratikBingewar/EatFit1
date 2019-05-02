@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:padding="25dp"
             android:layout_gravity="center"
-            android:text="Set Your Weight Goal"
+            android:text="Change Weight"
             android:textColor="@color/dot_dark_screen1"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -62,30 +62,11 @@
 
         </RelativeLayout>
 
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Set Intensity"
-            android:textSize="30dp"
-            android:gravity="center"
-            android:layout_alignParentLeft="true"
-            android:textStyle="bold"
-            android:textColor="@color/dot_dark_screen1"
-            android:padding="20dp"/>
-
 
         <!-- Intensity Level -->
-        <Spinner
-            android:id="@+id/intensty_level_weight_goal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:layout_alignParentRight="true"/>
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_set_weight_goal_next"
+            android:id="@+id/btn_set_chage_weight_next"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

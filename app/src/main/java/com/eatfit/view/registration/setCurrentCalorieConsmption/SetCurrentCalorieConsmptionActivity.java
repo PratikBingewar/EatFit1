@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.eatfit.R;
+import com.eatfit.model.newUser.InsertUserInFoodTable;
 import com.eatfit.model.registration.RegistrationModel;
 import com.eatfit.presenter.BMICalculator.BMICalculator;
 import com.eatfit.presenter.BMRCalc.BMRCalculator;
@@ -592,17 +593,27 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
 
     public  void onSuccessfulRegistration(){
 
-        Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
-        intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
-        intent.putExtra("username",user.getUsername());
-        intent.putExtra("new user","true");
-        startActivity(intent);
-        finish();
+        InsertUserInFoodTable insertUserInFoodTable = new InsertUserInFoodTable(user.getUsername(),this);
+        insertUserInFoodTable.setUserInfo();
     }
+
     public  void onError(String error){
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,error,Toast.LENGTH_SHORT).show();
     }
+
     public void onFailedRegistration(){
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration failed",Toast.LENGTH_SHORT).show();
+    }
+
+    public  void goToMainMenu(){
+        Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
+        intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
+        intent.putExtra("username",user.getUsername());
+        startActivity(intent);
+        finish();
+    }
+
+    public void onFailedToAddInFoodTable(){
+        Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"onFailed To Add In Food Table",Toast.LENGTH_SHORT).show();
     }
 }

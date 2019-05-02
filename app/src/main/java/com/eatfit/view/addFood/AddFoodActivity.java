@@ -13,12 +13,15 @@ import android.widget.Toast;
 
 import com.eatfit.R;
 import com.eatfit.model.addFood.AddFoodModel;
+import com.eatfit.model.eatenFoodList.EatenFoodList;
 import com.eatfit.presenter.User;
 import com.eatfit.view.connetionLost.LostConnectionActivity;
 import com.eatfit.view.menu.MainMenuActivity;
 import com.eatfit.view.registration.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity;
 import com.eatfit.view.registration.setWeightGoal.SetWeightGoalActivity;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -190,7 +193,6 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void onSuccessfulAddition() {
-
 
         Intent intent = new Intent(AddFoodActivity.this, MainMenuActivity.class);
         intent.putExtra("username",username);

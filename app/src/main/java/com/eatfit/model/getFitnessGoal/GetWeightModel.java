@@ -1,4 +1,4 @@
-package com.eatfit.model.newUser;
+package com.eatfit.model.getFitnessGoal;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,27 +10,25 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eatfit.view.login.LoginActivity;
-import com.eatfit.view.menu.MainMenuActivity;
+import com.eatfit.view.changeWeight.ChangeWeightActivity;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewUserDataCreation {
-    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/createNewUserInFoodTable.php";
+public class GetWeightModel {
+    public String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/update_weight.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
-    LoginActivity loginActivity;
     String userNAME;
-    MainMenuActivity mainMenuActivity;
+    ChangeWeightActivity changeWeightActivity;
 
-    public NewUserDataCreation(String username, MainMenuActivity mainMenuActivity) {
-        this.userNAME = username;
-        this.mainMenuActivity = mainMenuActivity;
-        requestQueue = Volley.newRequestQueue((Context) mainMenuActivity);
+    public GetWeightModel(String userNAME, ChangeWeightActivity changeWeightActivity) {
+        this.userNAME = userNAME;
+        this.changeWeightActivity = changeWeightActivity;
+        requestQueue = Volley.newRequestQueue((Context) changeWeightActivity);
     }
 
     public  void  getUerInfo() {
@@ -53,7 +51,7 @@ public class NewUserDataCreation {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
                 param.put("username",userNAME);
-                Log.d("username ",userNAME);
+                Log.d("username change weight",userNAME);
                 return param;
             }
         };
@@ -69,23 +67,20 @@ public class NewUserDataCreation {
 
 
         try {
-            JSONObject obj = new JSONObject(response);
-            String res=obj.getString("res");
 
-            if (res.equals("Y")) {
-                Log.d("Pratik","In yes of Model error");
-                changeConnectionStatus(true);
+            JSONObject root = new JSONObject(response);
 
-                String[] foods = {""};
-                mainMenuActivity.setUserInfo(foods,0);
-            } else if (res.equals("N")) {
-                Log.d("Pratik","In No of Model error");
-                changeConnectionStatus(false);
-                mainMenuActivity.onfailedInternetConnection();
-            }
-        } catch (Exception ex) {
-            Log.d("Pratik","In exception ");
+            double weight = root.getDouble("weight");
+            Log.d("weight in model:  ",weight+"");
+
+            changeWeightActivity.afterSuccessfulWeightFetch(weight);
+
+        }
+        catch (Exception ex) {
+            Log.d("Pratik","In exception "+ex);
             changeConnectionStatus(false);
+            changeWeightActivity.onFailedToFetchCurentWeight();
+            Log.d("fetch current weight",ex+"");
         }
     }
 }

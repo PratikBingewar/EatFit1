@@ -61,7 +61,7 @@ public class SearchFoodActivity extends AppCompatActivity implements SearchView.
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if (listNames.contains(query)) {
+                if (! listNames.contains(query)) {
                     adapter.getFilter().filter(query);
                 } else {
                     Toast.makeText(SearchFoodActivity.this, "No Match found", Toast.LENGTH_LONG).show();

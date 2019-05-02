@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
     tools:context=".view.details.DetailsActivity">
 
     <TextView
@@ -30,14 +31,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="157dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="-111dp"
+        android:gravity="center"
         android:text="Details"
         android:textSize="30dp"
         android:textStyle="bold" />
