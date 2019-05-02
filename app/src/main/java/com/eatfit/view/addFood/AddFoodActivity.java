@@ -65,7 +65,6 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         proteins = (double) intent.getSerializableExtra("proteins");
 
         unit = (String) intent.getSerializableExtra("unit");
-        totalCalVal = (double) intent.getSerializableExtra("unit_cal");
 
         Toast.makeText(AddFoodActivity.this,"selected: "+nameOfFood+" \ncalories: "+totalCalVal,Toast.LENGTH_SHORT).show();
         setIDs();

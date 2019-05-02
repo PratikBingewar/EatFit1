@@ -65,12 +65,14 @@ public class MainMenuActivity extends AppCompatActivity
         intent = getIntent();
         username = (String) intent.getSerializableExtra("username");
 
+        Log.d("username in main menu: ",username);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(this);
-
+        fab.setEnabled(false);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -83,6 +85,8 @@ public class MainMenuActivity extends AppCompatActivity
 
         GetUserDataModel getUserDataModel = new GetUserDataModel(username,this);
         getUserDataModel.getUerInfo();
+
+        Toast.makeText(MainMenuActivity.this,"Got all foods !!! ", Toast.LENGTH_SHORT);
 
     }
 
@@ -98,21 +102,21 @@ public class MainMenuActivity extends AppCompatActivity
     }
 
     private void setColors() {
+        int colorValue = Color.YELLOW;
         if(progressBar.getProgress() > 100) {
             Toast.makeText(MainMenuActivity.this, "You are eating too much !!!" , Toast.LENGTH_SHORT).show();
         }
         if(progressBar.getProgress() < 33) {
-            int redColorValue = Color.YELLOW;
-            progressBar.setBackgroundColor(redColorValue);
+            colorValue = Color.YELLOW;
         }
         if(progressBar.getProgress() < 66 && progressBar.getProgress() > 33 ) {
-            int redColorValue = Color.GREEN;
-            progressBar.setBackgroundColor(redColorValue);
+            colorValue = Color.GREEN;
         }
         if(progressBar.getProgress() > 66) {
-            int redColorValue = Color.RED;
-            progressBar.setBackgroundColor(redColorValue);
+            colorValue = Color.RED;
         }
+        progressBar.setBackgroundColor(colorValue);
+
     }
 
 
@@ -135,8 +139,8 @@ public class MainMenuActivity extends AppCompatActivity
         GetUserInfoModel getUserInfoModel = new GetUserInfoModel(username,this);
         getUserInfoModel.getUserObject();
 
-
-
+        Toast.makeText(MainMenuActivity.this,"Got user info !!! ", Toast.LENGTH_SHORT);
+        fab.setEnabled(true);
     }
 
 //        stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
@@ -365,8 +369,6 @@ public class MainMenuActivity extends AppCompatActivity
 //        progressBar.setMax(100);
 
         progressInPercentage = findViewById(R.id.progress_in_percentage);
-
-        progress = (Integer) intent.getSerializableExtra("progress");
 
         if(progress == null) {
             Log.d("null progress","null");

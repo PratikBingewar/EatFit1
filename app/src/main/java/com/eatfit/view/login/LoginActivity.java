@@ -115,9 +115,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
 
     public void onSuccessfulInfo() {
         Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
-        intent.putExtra("user",username);
-
-        intent.putExtra("progress",0);
+        intent.putExtra("username",username);
         startActivity(intent);
         finish();
     }

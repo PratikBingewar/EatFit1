@@ -41,14 +41,16 @@ public class SearchFoodActivity extends AppCompatActivity implements SearchView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_food);
 
+        intent = getIntent();
+        username = (String) intent.getSerializableExtra("username");
+        Log.d("search food username: ",username);
+
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.lv1);
 
         setList();
 
-        intent = getIntent();
-        username = (String) intent.getSerializableExtra("username");
-        Log.d("search food username: ",username);
+
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNames);
         listView.setAdapter(adapter);

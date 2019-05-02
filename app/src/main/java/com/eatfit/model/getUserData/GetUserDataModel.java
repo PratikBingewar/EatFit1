@@ -10,7 +10,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eatfit.presenter.User;
 import com.eatfit.view.login.LoginActivity;
 import com.eatfit.view.menu.MainMenuActivity;
 
@@ -35,7 +34,7 @@ public class GetUserDataModel {
     }
 
     public GetUserDataModel(String username, MainMenuActivity mainMenuActivity) {
-        this.userNAME = userNAME;
+        this.userNAME = username;
         this.mainMenuActivity = mainMenuActivity;
         requestQueue = Volley.newRequestQueue((Context) mainMenuActivity);
     }
@@ -52,7 +51,7 @@ public class GetUserDataModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("user data fetch: ","In volley error");
                         changeConnectionStatus(false);
                     }
                 }){
@@ -60,7 +59,7 @@ public class GetUserDataModel {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<String,String>();
                 param.put("username",userNAME);
-                Log.d("username ","pratik@gmail.com");
+                Log.d("username ",userNAME);
                 return param;
             }
         };
