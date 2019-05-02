@@ -56,8 +56,6 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         intent = getIntent();
         username = (String) intent.getSerializableExtra("username");
         Log.d("username: ",username);
-        progress = (Integer) intent.getSerializableExtra("progress");
-
         Log.d("add food username: ",username);
 
         carbs = (double) intent.getSerializableExtra("carbs");

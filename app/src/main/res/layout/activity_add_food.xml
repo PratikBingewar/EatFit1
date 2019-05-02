@@ -26,7 +26,7 @@
             android:padding="@dimen/dots_height"
             android:text="food"
             android:textColor="@color/dot_dark_screen1"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:layout_gravity="center"/>
 
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="?android:attr/listPreferredItemHeight"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:gravity="center"
                 android:text="sub"
                 android:textStyle="bold"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="?android:attr/listPreferredItemHeight"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:gravity="center"
                 android:text="add"
                 android:textStyle="bold"

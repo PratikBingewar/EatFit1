@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GetUserDataModel {
-    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/getUserFoodData.php";
+    public String  LOGIN_URL = "";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
@@ -27,14 +27,9 @@ public class GetUserDataModel {
     String userNAME;
     MainMenuActivity mainMenuActivity;
 
-    public GetUserDataModel(String userNAME, LoginActivity loginActivity) {
+    public GetUserDataModel(String userNAME, String LOGIN_URL, MainMenuActivity mainMenuActivity) {
         this.userNAME = userNAME;
-        this.loginActivity = loginActivity;
-        requestQueue = Volley.newRequestQueue((Context) loginActivity);
-    }
-
-    public GetUserDataModel(String username, MainMenuActivity mainMenuActivity) {
-        this.userNAME = username;
+        this.LOGIN_URL = LOGIN_URL;
         this.mainMenuActivity = mainMenuActivity;
         requestQueue = Volley.newRequestQueue((Context) mainMenuActivity);
     }
@@ -85,15 +80,18 @@ public class GetUserDataModel {
 
             JSONObject root = new JSONObject(response);
 
-            Log.d("orig string:  ",root.getString("food_name"));
+            double calorie_consumption = root.getDouble("calorie_consumption");
+            Log.d("calorie_consumption:  ", String.valueOf(root.getDouble("calorie_consumption")));
+
             String food_names = root.getString("food_name");
-            String token[] = food_names.split("_");
+            String[] token={""};
+            if(calorie_consumption != 0) {
+                Log.d("food name in model:  ",root.getString("food_name"));
+                token = food_names.split("_");
+            }
 
             Log.d("string length: ",""+token.length);
             Log.d("broken string : ",""+token.toString());
-
-            double calorie_consumption=root.getDouble("calorie_consumption");
-            Log.d("calorie_consumption:  ", String.valueOf(root.getDouble("calorie_consumption")));
 
 
             if(this.loginActivity != null) {

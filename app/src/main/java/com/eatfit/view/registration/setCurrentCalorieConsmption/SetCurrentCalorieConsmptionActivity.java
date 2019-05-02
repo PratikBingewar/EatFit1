@@ -586,9 +586,6 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
                     intakeForBreakFast,intakeForLunch,intakeForSnack,intakeForDinner,
                     timeToReachGoal,intensityID,fitnessID,activityID,this);
             registerModel.authenticate();
-
-
-
         }
 
     }
@@ -597,8 +594,8 @@ public class SetCurrentCalorieConsmptionActivity extends AppCompatActivity imple
 
         Toast.makeText(SetCurrentCalorieConsmptionActivity.this,"Registration Successful !!",Toast.LENGTH_SHORT).show();
         intent = new Intent(SetCurrentCalorieConsmptionActivity.this, MainMenuActivity.class);
-        intent.putExtra("user",user.getUsername());
-        intent.putExtra("progress",0);
+        intent.putExtra("username",user.getUsername());
+        intent.putExtra("new user","true");
         startActivity(intent);
         finish();
     }
