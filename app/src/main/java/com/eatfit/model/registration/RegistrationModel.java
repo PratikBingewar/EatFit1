@@ -116,12 +116,13 @@ public class RegistrationModel implements IRegisterModel {
                 param.put("password",password);
                 param.put("BMI", Double.toString(BMI));
                 param.put("BMR", Double.toString(BMR));
-                param.put("calorie_goal", Double.toString(2000));
+                calorieGoal = 1000+BMR;
+                param.put("calorie_goal", Double.toString(calorieGoal));
                 param.put("increment", Double.toString(100));
-                param.put("breakfast_intake", Double.toString(intakeForBreakFast));
-                param.put("lunch_intake", Double.toString(intakeForLunch));
-                param.put("snack_intake", Double.toString(intakeForSnack));
-                param.put("dinner_intake", Double.toString(intakeForDinner));
+                param.put("breakfast_intake", Double.toString(calorieGoal / 4));
+                param.put("lunch_intake", Double.toString(calorieGoal / 4));
+                param.put("snack_intake", Double.toString(calorieGoal / 4));
+                param.put("dinner_intake", Double.toString(calorieGoal / 4));
                 param.put("time_to_reach_goal", Double.toString(150));
                 param.put("intensity_id", Integer.toString(intensityID));
                 param.put("fitness_goal_id", Integer.toString(fitnessID));

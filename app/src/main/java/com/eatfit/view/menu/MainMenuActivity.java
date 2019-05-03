@@ -180,6 +180,10 @@ public class MainMenuActivity extends AppCompatActivity
         } else if (id == R.id.suggest_food_on_main_menu_drawer) {
             Intent intent = new Intent(MainMenuActivity.this, FoodSuggestionActivity.class);
             intent.putExtra("username",username);
+            intent.putExtra("list",list);
+            intent.putExtra("fitnessGoalID",user.getFitnessGoalID());
+            intent.putExtra("calorie_goal",user.getCalorieGoal());
+            intent.putExtra("progress",progress);
             startActivity(intent);
         } else if (id == R.id.add_food_on_main_menu_drawer) {
             Intent intent = new Intent(MainMenuActivity.this, SearchFoodActivity.class);
