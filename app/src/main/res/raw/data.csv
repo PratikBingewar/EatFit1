@@ -17,7 +17,7 @@ food_id,food_name,carbs ,protein ,fat,serving_unit ,unit_cal,weight
 16,Pattice,18.3,2.9,6.9,1 N,147,48
 17,Toast,2.4,0.4,0.1,1 N,12,5
 18,Bun ,28.9,3.3,2.8,1 N,154,35
-19,Cream Roll,28.6,3.2,23.2,1 N,336,55
+19,Cream Roll,28.6,3.2,23.2,1 S,336,55
 20,Glucose Biscuit,5,0.5,1.1,1 N,32,7
 21,Cream Biscuit,5.2,1.4,3.4,1 N,57,12
 22,Coconut Biscuit,5.8,0.5,1.2,1 N,36,8

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eatfit.R;
-import com.eatfit.model.getFitnessGoal.GetWeightModel;
+import com.eatfit.model.getWeightGoalModel.GetWeightModel;
 import com.eatfit.model.setNewWeightModel.SetNewWeightModel;
 import com.eatfit.view.menu.MainMenuActivity;
 
@@ -23,7 +23,7 @@ public class ChangeWeightActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_weight_goal);
+        setContentView(R.layout.change_weight);
 
 
         Intent intent  = getIntent();
@@ -45,12 +45,12 @@ public class ChangeWeightActivity extends AppCompatActivity implements View.OnCl
 
         maxWeight = currentWeight + 30;
         minWeight= currentWeight - 30;
-        add = findViewById(R.id.btn_add);
-        substract = findViewById(R.id.btn_substract);
-        weightValue = findViewById(R.id.weight_goal_value);
-        weightValue.setText(Double.toString(currentWeight)+" kg");
+        add = findViewById(R.id.btn_add_new_weight);
+        substract = findViewById(R.id.btn_substract_new_weight);
+        weightValue = findViewById(R.id.new_weight_value);
+        weightValue.setText(currentWeight+" kg");
 
-        next = findViewById(R.id.btn_set_chage_weight_next);
+        next = findViewById(R.id.btn_change_weight_next_button);
         add.setOnClickListener(this);
         substract.setOnClickListener(this);
         next.setOnClickListener(this);
@@ -63,21 +63,21 @@ public class ChangeWeightActivity extends AppCompatActivity implements View.OnCl
 
         switch (view.getId()) {
 
-            case R.id.btn_add:
+            case R.id.btn_add_new_weight:
                 if(maxWeight > currentWeight){
                     currentWeight = currentWeight + 1;
                     weightValue.setText(Double.toString(currentWeight)+" kg");
                 }
                 break;
 
-            case R.id.btn_substract:
+            case R.id.btn_substract_new_weight:
                 if((currentWeight - minWeight) > 0 && currentWeight > 40) {
                     currentWeight = currentWeight - 1;
                     weightValue.setText(Double.toString(currentWeight)+" kg");
                 }
                 break;
 
-            case R.id.btn_set_chage_weight_next:
+            case R.id.btn_change_weight_next_button:
                 String goalWeight = weightValue.getText().toString();
                 goalWeight = goalWeight.substring(0,goalWeight.length() -3);
                 double weight = Double.parseDouble(goalWeight);

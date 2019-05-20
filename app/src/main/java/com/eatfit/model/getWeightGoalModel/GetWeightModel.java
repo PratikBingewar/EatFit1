@@ -1,4 +1,4 @@
-package com.eatfit.model.getFitnessGoal;
+package com.eatfit.model.getWeightGoalModel;
 
 import android.content.Context;
 import android.util.Log;

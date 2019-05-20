@@ -1,30 +1,19 @@
 package com.eatfit.view.addFood;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eatfit.R;
 import com.eatfit.model.addFood.AddFoodModel;
-import com.eatfit.model.eatenFoodList.EatenFoodList;
-import com.eatfit.presenter.User;
 import com.eatfit.view.connetionLost.LostConnectionActivity;
 import com.eatfit.view.menu.MainMenuActivity;
-import com.eatfit.view.registration.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity;
-import com.eatfit.view.registration.setWeightGoal.SetWeightGoalActivity;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddFoodActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -67,7 +56,6 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
 
         unit = (String) intent.getSerializableExtra("unit");
 
-        Toast.makeText(AddFoodActivity.this,"selected: "+nameOfFood+" \ncalories: "+totalCalVal,Toast.LENGTH_SHORT).show();
         setIDs();
 
         setTexts();
@@ -102,11 +90,32 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
         proteinQty.setText(String.valueOf(proteins));
         fatQty.setText(String.valueOf(fats));
 
-        unitOfFood.setText(unit);
+        checkunit(unit);
 
         totalCal.setText(String.valueOf(carbs*4 + proteins*4 + fats*9));
 
         qtyOfFood.setText("1");
+    }
+
+    private void checkunit(String unit) {
+        String unitString = "";
+        if (unit.equals("C")) {
+            unitString = "cup";
+        } else if (unit.equals("K")) {
+            unitString = "katori";
+        } else if(unit.equals("G")){
+            unitString = "glass";
+        }
+        else if(unit.equals("SI")){
+            unitString = "slice";
+        }
+        else if(unit.equals("N")){
+            unitString = "piece";
+        }
+        else if(unit.equals("PI")){
+            unitString = "plate";
+        }
+        unitOfFood.setText(unitString);
     }
 
     @Override
@@ -184,11 +193,10 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
                 fats = Double.valueOf(carbQty.getText().toString());
                 totalCalVal = Double.valueOf(totalCal.getText().toString());
 
-                Toast.makeText(AddFoodActivity.this,""+carbs+" "+proteins+" "+fats+" ",Toast.LENGTH_SHORT).show();
                 AddFoodModel addFoodModel = new AddFoodModel(username, nameOfFood, totalCalVal,this);
                 addFoodModel.authenticate();
                 break;
-                
+
         }
     }
 

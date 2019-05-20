@@ -3,114 +3,102 @@ package com.eatfit.view.registration.setWeightGoal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eatfit.R;
-import com.eatfit.model.getFitnessGoal.GetWeightModel;
-import com.eatfit.model.getWeightGoalModel.GetWeightGoalModel;
-import com.eatfit.model.setNewWeightModel.SetNewWeightModel;
 import com.eatfit.presenter.User;
-import com.eatfit.presenter.registration.setWeightGoal.ISetWeightGoalPresenter;
-import com.eatfit.view.changeWeight.ChangeWeightActivity;
-import com.eatfit.view.menu.MainMenuActivity;
 import com.eatfit.view.registration.setCurrentCalorieConsmption.SetCurrentCalorieConsmptionActivity;
 
-public class SetWeightGoalActivity extends AppCompatActivity  implements View.OnClickListener{
+public class SetWeightGoalActivity extends AppCompatActivity  implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     Button add, substract, next;
     TextView weightValue;
-    String username;
     double currentWeight, maxWeight, minWeight;
-
+    Spinner spinnerIntensity;
+    String intensityLevel;
+    User user;
+    String fitnessGoal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_weight_goal);
+        setContentView(R.layout.set_weight);
 
 
         Intent intent = getIntent();
-        username = (String) intent.getSerializableExtra("username");
+        user = (User) intent.getSerializableExtra("user");
 
-        getWeight(username);
+        fitnessGoal = user.getFitnessGoal();
+        currentWeight = user.getWeight();
 
+        Log.d("weight of usr: ",currentWeight+"");
 
-    }
-
-    private void getWeight(String username) {
-        GetWeightGoalModel getWeightGoalModel = new GetWeightGoalModel(username, this);
-        getWeightGoalModel.getUerInfo();
-    }
-
-    public void afterSuccessfulWeightFetch(Double current_Weight) {
-        this.currentWeight = current_Weight;
-
-        maxWeight = currentWeight + 30;
-        minWeight = currentWeight - 30;
-        add = findViewById(R.id.btn_add);
-        substract = findViewById(R.id.btn_substract);
+        add = findViewById(R.id.new_btn_add);
+        substract = findViewById(R.id.new_btn_substract);
         weightValue = findViewById(R.id.weight_goal_value);
-        weightValue.setText(Double.toString(currentWeight) + " kg");
 
-        next = findViewById(R.id.btn_set_chage_weight_next);
+        spinnerIntensity = findViewById(R.id.intensity_level_spinner);
+        ArrayAdapter<CharSequence> charSequenceArrayAdapter = ArrayAdapter.createFromResource(this,R.array.intensity_array,android.R.layout.simple_spinner_item );
+        charSequenceArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerIntensity.setAdapter(charSequenceArrayAdapter);
+        spinnerIntensity.setOnItemSelectedListener(this);
+
+        next = findViewById(R.id.btn_set_weight_goal_next);
         add.setOnClickListener(this);
         substract.setOnClickListener(this);
         next.setOnClickListener(this);
 
-    }
+        weightValue.setText(user.getWeight()+" kg");
 
+        maxWeight = currentWeight + 20;
+        minWeight = currentWeight - 20;
+        if(minWeight < 40) {
+            minWeight = 40;
+        }
+    }
 
     @Override
     public void onClick(View view) {
 
         switch (view.getId()) {
 
-            case R.id.btn_add:
+            case R.id.new_btn_add:
                 if (maxWeight > currentWeight) {
                     currentWeight = currentWeight + 1;
                     weightValue.setText(Double.toString(currentWeight) + " kg");
                 }
                 break;
 
-            case R.id.btn_substract:
+            case R.id.new_btn_substract:
                 if ((currentWeight - minWeight) > 0 && currentWeight > 40) {
                     currentWeight = currentWeight - 1;
                     weightValue.setText(Double.toString(currentWeight) + " kg");
                 }
                 break;
 
-            case R.id.btn_set_chage_weight_next:
-                String goalWeight = weightValue.getText().toString();
-                goalWeight = goalWeight.substring(0, goalWeight.length() - 3);
-                double weight = Double.parseDouble(goalWeight);
-                updateWeight(weight);
-                break;
+            case R.id.btn_set_weight_goal_next:
+
+                user.setWeightGoal(currentWeight);
+                user.setIntensity(intensityLevel);
+                Log.d("weight goal: ",currentWeight+" "+intensityLevel);
+                Intent intent = new Intent(SetWeightGoalActivity.this, SetCurrentCalorieConsmptionActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
         }
     }
 
-    private void updateWeight(double weight) {
-        Toast.makeText(SetWeightGoalActivity.this, "Successful update !!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(SetWeightGoalActivity.this, MainMenuActivity.class);
-        intent.putExtra("username", username);
-        startActivity(intent);
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        intensityLevel = parent.getItemAtPosition(position).toString().toLowerCase();
     }
 
-    public void onFailedToFetchCurentWeight() {
-        Toast.makeText(SetWeightGoalActivity.this, "Successful update !!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(SetWeightGoalActivity.this, MainMenuActivity.class);
-        intent.putExtra("username", username);
-        startActivity(intent);
-    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
-    public void onSuccessfulUpdate() {
-        Toast.makeText(SetWeightGoalActivity.this,"Successful update !!",Toast.LENGTH_SHORT).show();;
-        Intent intent = new Intent(SetWeightGoalActivity.this, MainMenuActivity.class);
-        intent.putExtra("username",username);
-        startActivity(intent);
     }
 }

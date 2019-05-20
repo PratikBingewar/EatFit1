@@ -135,7 +135,7 @@ public class SearchFoodActivity extends AppCompatActivity implements SearchView.
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String value = listView.getItemAtPosition(position).toString();
 
-        Toast.makeText(SearchFoodActivity.this,"selected: "+value,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(SearchFoodActivity.this,"selected: "+value,Toast.LENGTH_SHORT).show();
         Set<FoodHolder> set = new HashSet<>(listObject);
         for (FoodHolder selected : set) {
             if(selected.getName().equals(value)){
@@ -143,13 +143,13 @@ public class SearchFoodActivity extends AppCompatActivity implements SearchView.
                 selectedFood = selected;
             }
         }
-        Toast.makeText(SearchFoodActivity.this,"selected: "+selectedFood.getName()+" "
-                +selectedFood.getCarbs()+" "
-                +selectedFood.getProtein()+" "
-                +selectedFood.getFat()+" "
-                +selectedFood.getUnitCal()+" "
-                +selectedFood.getWeight()+" "
-                +selectedFood.getServingUnit()+" ",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(SearchFoodActivity.this,"selected: "+selectedFood.getName()+" "
+//                +selectedFood.getCarbs()+" "
+//                +selectedFood.getProtein()+" "
+//                +selectedFood.getFat()+" "
+//                +selectedFood.getUnitCal()+" "
+//                +selectedFood.getWeight()+" "
+//                +selectedFood.getServingUnit()+" ",Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(SearchFoodActivity.this, AddFoodActivity.class);
         intent.putExtra("name",selectedFood.getName());

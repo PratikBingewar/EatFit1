@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="28dp"
-        android:text="Your Progress..."
+        android:text="Your progress so far"
         android:textAlignment="center"
         android:textSize="@dimen/dots_height" />
 
@@ -36,27 +36,21 @@
         android:layout_marginBottom="30dp"
         android:layout_toStartOf="@+id/progress_in_percentage" />
 
-    <Button
-        android:id="@+id/btn_show_details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/progressBar"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="69dp"
-        android:backgroundTint="@android:color/transparent"
-        android:text="details"
-        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/last_5_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="recently eaten..."
-        android:paddingTop="@dimen/desc_padding"
-        android:layout_alignTop="@+id/btn_show_details"
-        android:textAlignment="center"
+        android:layout_alignTop="@+id/progressBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="54dp"
         android:gravity="center"
+        android:paddingTop="@dimen/desc_padding"
+        android:text="Last foods you tried"
+        android:textColor="@color/bg_screen1"
+        android:textStyle="bold"
+        android:textAlignment="center"
         android:textSize="@dimen/dots_height" />
 
     <ListView
@@ -64,7 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="441dp"
         android:layout_below="@+id/last_5_items"
-        android:layout_marginTop="18dp" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="46dp" />
 
     <TextView
         android:id="@+id/progress_in_percentage"

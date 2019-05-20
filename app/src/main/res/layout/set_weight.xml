@@ -12,14 +12,13 @@
         android:padding="@dimen/dots_height">
 
         <TextView
-            android:id="@+id/set_weight_goal_label"
+            android:id="@+id/set_new_weight_goal_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="25dp"
-            android:layout_gravity="center"
-            android:text="Change Weight"
+            android:padding="@dimen/dots_height"
+            android:text="Set Your Weight Goal"
             android:textColor="@color/dot_dark_screen1"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
 
@@ -28,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:text="Weight"
             android:textSize="30dp"
             android:textStyle="bold"/>
 
@@ -35,10 +35,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:padding="40dp">
 
             <Button
-                android:id="@+id/btn_substract"
+                android:id="@+id/new_btn_substract"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
@@ -49,7 +49,7 @@
 
 
             <Button
-                android:id="@+id/btn_add"
+                android:id="@+id/new_btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
@@ -63,10 +63,19 @@
         </RelativeLayout>
 
 
+
+        <Spinner
+            android:id="@+id/intensity_level_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+
         <!-- Intensity Level -->
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_set_chage_weight_next"
+            android:id="@+id/btn_set_weight_goal_next"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

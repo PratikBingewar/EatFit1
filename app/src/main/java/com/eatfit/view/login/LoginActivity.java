@@ -3,6 +3,7 @@ package com.eatfit.view.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,16 +37,26 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     }
 
     public void initView() {
+
+
+
+
         txtEmail = findViewById(R.id.input_login_email);
+        InputFilter[] emailFilters = new InputFilter[1];
+        emailFilters[0] = new InputFilter.LengthFilter(20);
+        txtEmail.setFilters(emailFilters);
+
         txtPassword = findViewById(R.id.input_login_password);
-        txtPassword.setOnClickListener(this);
+        InputFilter[] passFilters = new InputFilter[1];
+        passFilters[0] = new InputFilter.LengthFilter(10);
+        txtPassword.setFilters(passFilters);
 
         login = findViewById(R.id.btn_login);
         login.setOnClickListener(this);
 
         register = findViewById(R.id.btn_register);
         register.setOnClickListener(this);
-
+        txtPassword.setOnClickListener(this);
         forgotPassword = findViewById(R.id.btn_forgot_password);
         forgotPassword.setOnClickListener(this);
         loginPresenter = new LoginRepresenter(this);

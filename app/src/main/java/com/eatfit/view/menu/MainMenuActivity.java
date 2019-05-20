@@ -1,7 +1,6 @@
 package com.eatfit.view.menu;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -27,10 +26,7 @@ import com.eatfit.presenter.User;
 import com.eatfit.view.basicProfile.BasicProfileActivity;
 import com.eatfit.view.changeFitnessGoal.ChangeFitnessGoalActivity;
 import com.eatfit.view.changeWeight.ChangeWeightActivity;
-import com.eatfit.view.changeWeightGoal.ChangeWeightGoalActivity;
-import com.eatfit.view.details.DetailsActivity;
 import com.eatfit.view.login.LoginActivity;
-import com.eatfit.view.reminder.SetReminderActivity;
 import com.eatfit.view.searchFood.SearchFoodActivity;
 import com.eatfit.view.suggestFood.FoodSuggestionActivity;
 
@@ -56,6 +52,7 @@ public class MainMenuActivity extends AppCompatActivity
     TextView totalCalories;
     FloatingActionButton fab;
     String isNewUser;
+    TextView userNameOnMainMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +120,6 @@ public class MainMenuActivity extends AppCompatActivity
         GetUserInfoModel getUserInfoModel = new GetUserInfoModel(username,this);
         getUserInfoModel.getUserObject();
 
-
         Toast.makeText(MainMenuActivity.this,"Got user info !!! ", Toast.LENGTH_SHORT);
         fab.setEnabled(true);
         Log.d("fab enabled: ","now add");
@@ -132,7 +128,7 @@ public class MainMenuActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         nameOnMainMenu.setText(name);
-        emailOnMainMenu.setText(email);
+        emailOnMainMenu.setText(username);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -189,20 +185,8 @@ public class MainMenuActivity extends AppCompatActivity
             Intent intent = new Intent(MainMenuActivity.this, SearchFoodActivity.class);
             intent.putExtra("username",username);
             startActivity(intent);
-        } else if (id == R.id.details_on_main_menu_drawer) {
-            Intent intent = new Intent(MainMenuActivity.this, DetailsActivity.class);
-            intent.putExtra("username",username);
-            startActivity(intent);
-        } else if (id == R.id.reminder_on_main_menu_drawer) {
-            Intent intent = new Intent(MainMenuActivity.this, SetReminderActivity.class);
-            intent.putExtra("username",username);
-            startActivity(intent);
         } else if (id == R.id.change_current_weight_on_main_menu_drawer) {
             Intent intent = new Intent(MainMenuActivity.this, ChangeWeightActivity.class);
-            intent.putExtra("username",username);
-            startActivity(intent);
-        } else if (id == R.id.change_weight_goal_on_main_menu_drawer) {
-            Intent intent = new Intent(MainMenuActivity.this, ChangeWeightGoalActivity.class);
             intent.putExtra("username",username);
             startActivity(intent);
         } else if (id == R.id.change_current_fitness_goal_on_main_menu_drawer) {
@@ -237,6 +221,12 @@ public class MainMenuActivity extends AppCompatActivity
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         listView.setAdapter(adapter);
 
+        nameOnMainMenu = findViewById(R.id.name_on_main_menu);
+        userNameOnMainMenu = findViewById(R.id.username_on_main_menu);
+
+        nameOnMainMenu.setText(user.getName());
+        userNameOnMainMenu.setText(user.getUsername());
+
         totalCalories = findViewById(R.id.total_calories);
         nameOnMainMenu = findViewById(R.id.name_on_main_menu);
         emailOnMainMenu = findViewById(R.id.username_on_main_menu);
@@ -255,9 +245,9 @@ public class MainMenuActivity extends AppCompatActivity
 
 
     public void printAllStrings(String[] token) {
-        for (int i=0 ; i<token.length ; i++){
-            Toast.makeText(MainMenuActivity.this,(i+1)+" "+token[i],Toast.LENGTH_SHORT).show();
-        }
+//        for (int i=0 ; i<token.length ; i++){
+//            Toast.makeText(MainMenuActivity.this,(i+1)+" "+token[i],Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override

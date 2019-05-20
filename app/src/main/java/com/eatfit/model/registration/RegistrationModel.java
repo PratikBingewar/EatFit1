@@ -116,7 +116,14 @@ public class RegistrationModel implements IRegisterModel {
                 param.put("password",password);
                 param.put("BMI", Double.toString(BMI));
                 param.put("BMR", Double.toString(BMR));
-                calorieGoal = 1000+BMR;
+                if(BMR < 300) {
+                    calorieGoal = 1000+ 4*BMR;
+                }else if(BMR > 300 && BMR < 600) {
+                    calorieGoal = 1000+ 2*BMR;
+                }
+                else {
+                    calorieGoal = 1000+ 1.5*BMR;
+                }
                 param.put("calorie_goal", Double.toString(calorieGoal));
                 param.put("increment", Double.toString(100));
                 param.put("breakfast_intake", Double.toString(calorieGoal / 4));

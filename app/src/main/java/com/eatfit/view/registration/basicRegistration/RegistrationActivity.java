@@ -3,6 +3,7 @@ package com.eatfit.view.registration.basicRegistration;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,7 @@ public class RegistrationActivity extends AppCompatActivity implements IRegister
     int age;
     User user;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +40,32 @@ public class RegistrationActivity extends AppCompatActivity implements IRegister
 
         user = new User();
 
+        InputFilter[] nameFilter = new InputFilter[1];
         edtName = findViewById(R.id.input_reg_name);
+        nameFilter[0] = new InputFilter.LengthFilter(20);
+        edtName.setFilters(nameFilter);
 
         radioGenderGroup = findViewById(R.id.radioGroup);
 
+        InputFilter[] ageFilters = new InputFilter[1];
         edtAge = findViewById(R.id.input_reg_age);
+        ageFilters[0] = new InputFilter.LengthFilter(2);
+        edtAge.setFilters(ageFilters);
 
+        InputFilter[] emailFilters = new InputFilter[1];
         edtEmail = findViewById(R.id.input_reg_email);
+        emailFilters[0] = new InputFilter.LengthFilter(20);
+        edtEmail.setFilters(emailFilters);
+
+        InputFilter[] passFilters = new InputFilter[1];
         edtPassword = findViewById(R.id.input_reg_password);
+        passFilters[0] = new InputFilter.LengthFilter(10);
+        edtPassword.setFilters(passFilters);
+
         edtRePassword = findViewById(R.id.input_reg_reEnterPassword);
+        passFilters[0] = new InputFilter.LengthFilter(10);
+        edtRePassword.setFilters(passFilters);
+
 
         btnSignUp = findViewById(R.id.btn_reg_signup);
         btnLogin = findViewById(R.id.btn_reg_login);

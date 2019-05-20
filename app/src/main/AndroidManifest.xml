@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_food_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.changeWeightGoal.ChangeWeightGoalActivity"></activity>
         <activity android:name=".view.connetionLost.LostConnectionActivity" />
         <activity android:name=".view.basicProfile.UpdatePassword" />
         <activity android:name=".view.basicProfile.UpdateUserName" />
