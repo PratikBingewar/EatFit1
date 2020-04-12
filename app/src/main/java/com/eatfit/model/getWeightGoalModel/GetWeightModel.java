@@ -43,7 +43,7 @@ public class GetWeightModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("user data fetch: ","In volley error");
+                        Log.d("user data fetch: ","get new weight: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){

@@ -46,7 +46,7 @@ public class UpdateNameModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","update name: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){

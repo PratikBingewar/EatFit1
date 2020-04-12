@@ -23,7 +23,7 @@ import java.util.Map;
 public class LoginModel implements ILoginModel {
 
     String username,password;
-    public final String  LOGIN_URL = "http://eatfit223.000webhostapp.com/volley/login.php";
+    public final String  LOGIN_URL = "https://eatfit223.000webhostapp.com/volley/login.php";
     StringRequest stringRequest;
     RequestQueue requestQueue;
     boolean CONNECTION_STATUS;
@@ -48,8 +48,9 @@ public class LoginModel implements ILoginModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","Login: In volley error");
                         changeConnectionStatus(false);
+                        loginRepresenter.onFailedLogin();
                     }
                 }){
             @Override
@@ -65,6 +66,7 @@ public class LoginModel implements ILoginModel {
 
     public void changeConnectionStatus(boolean val) {
         CONNECTION_STATUS = val;
+
     }
 
     public void checkResponse(String response){

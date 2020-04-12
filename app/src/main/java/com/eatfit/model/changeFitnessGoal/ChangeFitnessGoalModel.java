@@ -46,7 +46,7 @@ public class ChangeFitnessGoalModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","change fitness goal: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){

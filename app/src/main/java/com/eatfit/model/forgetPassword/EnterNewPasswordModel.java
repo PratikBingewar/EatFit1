@@ -51,7 +51,7 @@ public class EnterNewPasswordModel implements IEnterNewPasswordModel{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","enter new password: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){

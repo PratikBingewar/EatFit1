@@ -47,7 +47,7 @@ public class AddFoodModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","Add Food: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){

@@ -44,7 +44,7 @@ public class UpdatePasswordModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","update password: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){

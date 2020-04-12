@@ -52,7 +52,7 @@ public class GetUserInfoModel {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","get user info: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){

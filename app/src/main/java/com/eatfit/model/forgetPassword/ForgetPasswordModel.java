@@ -65,7 +65,7 @@ public class ForgetPasswordModel implements IForgetPasswordModel{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Pratik","In volley error");
+                        Log.d("Pratik","forgot password: In volley error");
                         changeConnectionStatus(false);
                     }
                 }){
