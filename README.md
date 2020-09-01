@@ -7,4 +7,11 @@ Food will be suggested to user as per user input.
 ### Screenshots
 -----------
 
-![Dashboard](screenshots/dashboard.jpg "Main page")
+![Main Page](screenshots/main page.jpg "Login page")
+![registration](screenshots/registration.jpg "Registration page")
+![Main Page](screenshots/main page.jpg "Main page")
+-----------------------------------------------------
+![set eating habits](screenshots/set eating habits.jpg "set eating habits")
+![set fitness goal](screenshots/set fitness goal.jpg "set fitness goal")
+![quantity](screenshots/quantity.jpg "quantity")
+
