@@ -6,7 +6,7 @@ Food will be suggested to user as per user input.
 -----------
 ### Screenshots
 -----------
-
+#
 ![Main Page](screenshots/main-page.jpg "Login page")
 ![registration](screenshots/registration.jpg "Registration page")
 ![dashboard](screenshots/dashboard.jpg "Main page")
